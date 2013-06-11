@@ -4,12 +4,12 @@
     = "Runway"
 
 .row-fluid
-  .span3
+  .span2
     %h4 
       %i.icon-user
       Clients
     %div{:style => "height: 300px !important;overflow: scroll;"}
-      %table.table.table-hover
+      %table.table-hover
         %tbody
           - @clients.each do |client|
             %tr
@@ -23,13 +23,15 @@
                 %p= client.home_phone
               .modal-footer
                 = link_to 'Close', '#', :class => 'btn', "data-dismiss" => "modal"
-  .span3
+  .span4
     %h4 
       %i.icon-star-empty
       Projects
-  .span3
+  .span4
     %h4 
       %i.icon-calendar
       Calendar
-  .span3
-    Span 4
+  .span2
+    %h4
+      %i.icon-ok-sign
+      To Do
