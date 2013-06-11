@@ -1,13 +1,29 @@
 = simple_form_for @contact, :html => { :class => 'form-horizontal' } do |f|
-  = f.input :tag_list
-  = f.input :title
-  = f.input :first_name
-  = f.input :middle_name
-  = f.input :last_name
-  = f.input :suffix
-  = f.input :company
-  = f.input :department
-  = f.input :job_title
+
+  %table
+    %tr
+      %td= f.input :tag_list
+    %tr
+      %td= f.input :title, :placeholder => "Title", :label => "Title", :input_html => {:class => 'input-medium'}
+      %td= f.input :first_name, :placeholder => "First Name", :label => "First Name", :input_html => {:class => 'input-medium'}
+      %td= f.input :middle_name, :placeholder => "Middle Name", :label => "Middle Name", :input_html => {:class => 'input-medium'}
+      %td= f.input :last_name, :placeholder => "Last Name", :label => "Last Name", :input_html => {:class => 'input-medium'}
+      %td= f.input :suffix, :placeholder => "Suffix", :label => "Suffix", :input_html => {:class => 'input-medium'}
+    %tr
+      %td= f.input :company, :placeholder => "Company", :label => "Company", :input_html => {:class => 'input-medium'}
+      %td= f.input :department, :placeholder => "Department", :label => "Department", :input_html => {:class => 'input-medium'}
+      %td= f.input :job_title, :placeholder => "Job Title", :label => "Job Title", :input_html => {:class => 'input-medium'}
+    %tr
+      %td= f.input :address, :placeholder => "Customer's Address", :label => "Address", :input_html => {rows: 4, :class => 'input-medium'}
+      %td= f.input :email, :placeholder => "Email", :label => "Email", :input_html => {:class => 'input-medium'}
+    %tr
+      %td= f.input :ssn, :placeholder => "Social Security Number", :label => "SSN", :input_html => {:class => 'ssn input-medium'}
+      %td= f.input :dln, :placeholder => "Driver's License Number", :label => "License #", :input_html => {:class => 'input-medium'}
+
+    %tr
+      %td= f.input :phone, :placeholder => "Home Phone", :label => "Home", :input_html => {:class => 'phone input-medium'}
+      %td= f.input :cell, :placeholder => "Cell Phone", :label => "Cell", :input_html => {:class => 'phone input-medium'}
+
   = f.input :business_street
   = f.input :business_street_2
   = f.input :business_street_3

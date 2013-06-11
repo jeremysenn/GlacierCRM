@@ -21,9 +21,9 @@
           %i.icon-tasks
           Tasks
       %li
-        %a{:href => "#appointments", :data => {:toggle => "tab"}}
+        %a{:href => "#calendar", :data => {:toggle => "tab"}}
           %i.icon-calendar
-          Appointments
+          Calendar
       %li
         %a{:href => "#emails", :data => {:toggle => "tab"}}
           %i.icon-pencil
@@ -72,8 +72,8 @@
                 %td= mail_to contact.email
       .tab-pane{:id => "tasks"}
         TASKS
-      .tab-pane{:id => "appointments"}
-        APPOINTMENTS
+      .tab-pane{:id => "calendar"}
+        CALENDAR
       .tab-pane{:id => "emails"}
         EMAILS
 
@@ -117,9 +117,9 @@
       .tab-pane{:id => "tasks"}
         %h4
           TASKS
-      .tab-pane{:id => "appointments"}
+      .tab-pane{:id => "calendar"}
         %h4
-          APPOINTMENTS
+          CALENDAR
       .tab-pane{:id => "emails"}
         %h4
           EMAILS
