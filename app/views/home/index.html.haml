@@ -5,10 +5,31 @@
 
 .row-fluid
   .span3
-    Span 1
+    %h4 
+      %i.icon-user
+      Clients
+    %div{:style => "height: 300px !important;overflow: scroll;"}
+      %table.table.table-hover
+        %tbody
+          - @clients.each do |client|
+            %tr
+              %td= link_to client.name, "#client" + client.id.to_s, "data-toggle" => "modal", :type => "button", :class => 'thumbnail'
+            %div{:id => "client" + client.id.to_s, :class => "modal", :style => "display:none;"}
+              .modal-header
+                = link_to "×", '#', :class => "close", "data-dismiss" => "modal"
+                = "#{client.name}"
+              .modal-body
+                %p= client.mobile_phone
+                %p= client.home_phone
+              .modal-footer
+                = link_to 'Close', '#', :class => 'btn', "data-dismiss" => "modal"
   .span3
-    Span 2
+    %h4 
+      %i.icon-star-empty
+      Projects
   .span3
-    Span 3
+    %h4 
+      %i.icon-calendar
+      Calendar
   .span3
     Span 4

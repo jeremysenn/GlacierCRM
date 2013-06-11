@@ -2,6 +2,6 @@ class HomeController < ApplicationController
   before_filter :login_required, :except => []
   
   def index
-    @users = User.all
+    @clients = current_user.company.contacts.order(:last_name).tagged_with("Client")
   end
 end
