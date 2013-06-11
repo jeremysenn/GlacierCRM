@@ -22,11 +22,11 @@
           %tr
             %th{:style => 'display:none;'}=t '.actions', :default => t("helpers.actions")
             %th= "Name"
-            %th= "Business"
-            %th= "Home"
-            %th= "Mobile"
-            %th= "Years as Client"
             %th= "Age"
+            %th= "Mobile"
+            %th= "Home"
+            %th= "Business"
+            %th= "Years as Client"
             %th= model_class.human_attribute_name(:email)
         %tbody
           - @clients.each do |client|
@@ -34,19 +34,19 @@
               %td{:style => 'display:none;'}
                 = link_to t('.show', :default => t("helpers.links.show")), contact_path(client)
               %td= client.name
-              %td= client.business_phone
-              %td= client.home_phone
-              %td= client.mobile_phone
-              %td= (client.anniversary_age.to_i + 1).to_s
               %td= client.birthday_age
+              %td= client.mobile_phone
+              %td= client.home_phone
+              %td= client.business_phone
+              %td= (client.anniversary_age.to_i + 1).to_s
               %td= mail_to client.email
     .tab-pane{:id => "companies"}
       %table.table.table-striped{"data-provides" => "rowlink"}
         %thead
           %tr
             %th{:style => 'display:none;'}=t '.actions', :default => t("helpers.actions")
-            %th= "Contact"
             %th= model_class.human_attribute_name(:company)
+            %th= "Contact"
             %th= "Fax"
             %th= "Business"
             %th= "Mobile"
@@ -56,8 +56,8 @@
             %tr
               %td{:style => 'display:none;'}
                 = link_to t('.show', :default => t("helpers.links.show")), contact_path(company)
-              %td= company.name
               %td= company.company
+              %td= company.name
               %td= company.business_fax
               %td= company.business_phone
               %td= company.mobile_phone
@@ -68,9 +68,9 @@
           %tr
             %th{:style => 'display:none;'}=t '.actions', :default => t("helpers.actions")
             %th= "Name"
-            %th= "Business"
-            %th= "Home"
             %th= "Mobile"
+            %th= "Home"
+            %th= "Business"
             %th= model_class.human_attribute_name(:email)
             
         %tbody.rowlink
@@ -79,9 +79,9 @@
               %td{:style => 'display:none;'}
                 = link_to t('.show', :default => t("helpers.links.show")), contact_path(pc)
               %td= pc.name
-              %td= pc.business_phone
-              %td= pc.home_phone
               %td= pc.mobile_phone
+              %td= pc.home_phone
+              %td= pc.business_phone
               %td= mail_to pc.email
 
 - else

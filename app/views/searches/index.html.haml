@@ -47,8 +47,8 @@
                       = result.name
                     - else
                       = result.company
-                  %td= result.business_phone
                   %td= result.mobile_phone
+                  %td= result.home_phone
                   %td= mail_to result.email
 
       .tab-pane{:id => "contacts"}
@@ -67,8 +67,8 @@
                     = contact.name
                   - else
                     = contact.company
-                %td= contact.business_phone
                 %td= contact.mobile_phone
+                %td= contact.home_phone
                 %td= mail_to contact.email
       .tab-pane{:id => "tasks"}
         TASKS
