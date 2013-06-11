@@ -1,0 +1,128 @@
+- model_class = Contact
+%h3
+  %i.icon-user
+  =t '.title', :default => model_class.model_name.human.pluralize
+
+.tabbable{}
+  %ul.nav.nav-pills
+    %li.active
+      %a{:href => "#clients", :data => {:toggle => "tab"}}
+        Clients
+    %li
+      %a{:href => "#companies", :data => {:toggle => "tab"}}
+        Companies
+    %li
+      %a{:href => "#personal_contacts", :data => {:toggle => "tab"}}
+        Personal
+- unless mobile_device?
+  .tab-content{}
+    .tab-pane.active{:id => "clients"}
+      %table.table.table-striped{"data-provides" => "rowlink"}
+        %thead
+          %tr
+            %th{:style => 'display:none;'}=t '.actions', :default => t("helpers.actions")
+            %th= "Name"
+            %th= "Business"
+            %th= "Home"
+            %th= "Mobile"
+            %th= "Years as Client"
+            %th= "Age"
+            %th= model_class.human_attribute_name(:email)
+        %tbody
+          - @clients.each do |client|
+            %tr
+              %td{:style => 'display:none;'}
+                = link_to t('.show', :default => t("helpers.links.show")), contact_path(client)
+              %td= client.name
+              %td= client.business_phone
+              %td= client.home_phone
+              %td= client.mobile_phone
+              %td= (client.anniversary_age.to_i + 1).to_s
+              %td= client.birthday_age
+              %td= mail_to client.email
+    .tab-pane{:id => "companies"}
+      %table.table.table-striped{"data-provides" => "rowlink"}
+        %thead
+          %tr
+            %th{:style => 'display:none;'}=t '.actions', :default => t("helpers.actions")
+            %th= "Contact"
+            %th= model_class.human_attribute_name(:company)
+            %th= "Fax"
+            %th= "Business"
+            %th= "Mobile"
+            %th= model_class.human_attribute_name(:email)
+        %tbody.rowlink
+          - @companies.each do |company|
+            %tr
+              %td{:style => 'display:none;'}
+                = link_to t('.show', :default => t("helpers.links.show")), contact_path(company)
+              %td= company.name
+              %td= company.company
+              %td= company.business_fax
+              %td= company.business_phone
+              %td= company.mobile_phone
+              %td= mail_to company.email
+    .tab-pane{:id => "personal_contacts"}
+      %table.table.table-striped{"data-provides" => "rowlink"}
+        %thead
+          %tr
+            %th{:style => 'display:none;'}=t '.actions', :default => t("helpers.actions")
+            %th= "Name"
+            %th= "Business"
+            %th= "Home"
+            %th= "Mobile"
+            %th= model_class.human_attribute_name(:email)
+            
+        %tbody.rowlink
+          - @personal_contacts.each do |pc|
+            %tr
+              %td{:style => 'display:none;'}
+                = link_to t('.show', :default => t("helpers.links.show")), contact_path(pc)
+              %td= pc.name
+              %td= pc.business_phone
+              %td= pc.home_phone
+              %td= pc.mobile_phone
+              %td= mail_to pc.email
+
+- else
+  .tab-content{}
+    .tab-pane.active{:id => "clients"}
+      %table.table.table-striped{"data-provides" => "rowlink"}
+        %tbody
+          - @clients.each do |client|
+            %tr
+              %td{:style => 'display:none;'}
+                = link_to t('.show', :default => t("helpers.links.show")), contact_path(client)
+              %td
+                %h4= client.name
+    .tab-pane{:id => "companies"}
+      %table.table.table-striped{"data-provides" => "rowlink"}
+        %tbody.rowlink
+          - @companies.each do |company|
+            %tr
+              %td{:style => 'display:none;'}
+                = link_to t('.show', :default => t("helpers.links.show")), contact_path(company)
+              %td
+                %h4= company.company
+    .tab-pane{:id => "personal_contacts"}
+      %table.table.table-striped{"data-provides" => "rowlink"}
+        %tbody.rowlink
+          - @personal_contacts.each do |pc|
+            %tr
+              %td{:style => 'display:none;'}
+                = link_to t('.show', :default => t("helpers.links.show")), contact_path(pc)
+              %td
+                %h4= pc.name
+
+= link_to t('.new', :default => t("helpers.links.new")), new_contact_path, :class => 'btn btn-primary'
+
+- if false
+  %hr
+
+  %h4 Import Contacts CSV
+  = form_tag import_contacts_path, multipart: true do
+    = file_field_tag :file
+    = submit_tag "Import"
+
+  %h4 Download Contacts to CSV
+  = link_to "Contacts CSV", contacts_path(format: "csv")

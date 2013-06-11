@@ -1,7 +1,54 @@
-%h2 Sign in
-= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-vertical' }) do |f|
-  = f.input :email, :autofocus => true
-  = f.input :password
-  = f.input :remember_me, :as => :boolean if devise_mapping.rememberable?
-  = f.button :submit, "Sign in", :class => 'btn-primary'
-= render "devise/shared/links"
+.row-fluid
+  .jumbotron
+    .pagination-centered
+      = image_tag("moose_logo_medium.png")
+    %h2
+      GlacierWealth CRM makes it easy to manage your IA business.
+    %p.lead
+      Get a tight handle on your Investment Advisor business. GlacierWealth CRM does the work of organizing your data, all in the cloud.
+      Store & search everything that is important to you and your clients.
+    %a{:href => new_registration_path(resource_name), :class => "btn btn-large btn-warning"}
+      Get started now
+
+  .nav.nav-list
+    %li.divider
+  .container-narrow
+    .row-fluid
+      .jumbotron
+        .span6
+          %h4
+            %a{:href => '#', :class => "text-error"}
+              = "Search"
+              %i.icon-search
+          %p Search everything, anytime, anywhere.
+
+          %h4
+            %a{:href => '#', :class => "text-error"}
+              = "Contacts"
+              %i.icon-user
+          %p Save all contact data.
+
+          %h4
+            %a{:href => '#', :class => "text-error"}
+              = "Tasks"
+              %i.icon-tasks
+          %p Create tasks.
+
+        .span6
+          %h4
+            %a{:href => '#', :class => "text-error"}
+              = "Email & Text Notifications"
+              %i.icon-envelope
+          %p Be notified when you want, how you want.
+
+          %h4
+            %a{:href => '#', :class => "text-error"}
+              = "Mobile Ready"
+              %i.icon-signal
+          %p Do it all from your mobile device.
+
+        %h4
+          %a{:href => '#', :class => "text-error"}
+            = "Calendar"
+            %i.icon-calendar
+        %p Stay organized with the calendar.

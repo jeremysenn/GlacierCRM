@@ -1,0 +1,125 @@
+.container-narrow
+  = form_tag searches_path, :method => :get, :class => "navbar-search form-search" do
+    .input-append
+      = text_field_tag :q, nil, :placeholder => "Search", :id => "appendedInputButton", :class => 'span6  search-query', :value => params[:q]
+      = button_tag(type: 'submit', class: "btn") do
+        %i.icon-search
+  %br
+  %br
+  %br
+  .tabbable{}
+    %ul.nav.nav-pills
+      %li.active
+        %a{:href => "#everything", :data => {:toggle => "tab"}}
+          Everything
+      %li
+        %a{:href => "#contacts", :data => {:toggle => "tab"}}
+          %i.icon-user
+          Contacts
+      %li
+        %a{:href => "#tasks", :data => {:toggle => "tab"}}
+          %i.icon-tasks
+          Tasks
+      %li
+        %a{:href => "#appointments", :data => {:toggle => "tab"}}
+          %i.icon-calendar
+          Appointments
+      %li
+        %a{:href => "#emails", :data => {:toggle => "tab"}}
+          %i.icon-pencil
+          Emails
+
+  - unless mobile_device?
+    .tab-content{}
+      .tab-pane.active{:id => "everything"}
+        -if @results.count == 0
+          Nothing found
+        %table.table.table-striped{"data-provides" => "rowlink"}
+          %tbody
+            - @results.each do |result|
+              %tr
+                %td{:style => 'display:none;'}
+                  = link_to t('.show', :default => t("helpers.links.show")), contact_path(result)
+                %td
+                  - if result.class.name == 'Contact'
+                    %i.icon-user
+                    - unless result.tag_list.include?("Company")
+                      = result.name
+                    - else
+                      = result.company
+                  %td= result.business_phone
+                  %td= result.mobile_phone
+                  %td= mail_to result.email
+
+      .tab-pane{:id => "contacts"}
+        - if @contacts.blank?
+          No Contacts found
+        - else
+          %table.table.table-striped{"data-provides" => "rowlink"}
+            %tbody
+            - @contacts.each do |contact|
+              %tr
+                %td{:style => 'display:none;'}
+                  = link_to t('.show', :default => t("helpers.links.show")), contact_path(contact)
+                %td
+                  %i.icon-user
+                  - unless contact.tag_list.include?("Company")
+                    = contact.name
+                  - else
+                    = contact.company
+                %td= contact.business_phone
+                %td= contact.mobile_phone
+                %td= mail_to contact.email
+      .tab-pane{:id => "tasks"}
+        TASKS
+      .tab-pane{:id => "appointments"}
+        APPOINTMENTS
+      .tab-pane{:id => "emails"}
+        EMAILS
+
+  - else
+    .tab-content{}
+      .tab-pane.active{:id => "everything"}
+        -if @results.count == 0
+          Nothing found
+        - else
+          %table.table.table-striped{"data-provides" => "rowlink"}
+            %tbody
+            - @results.each do |result|
+              %tr
+                %td{:style => 'display:none;'}
+                  = link_to t('.show', :default => t("helpers.links.show")), contact_path(result)
+                %td
+                  %h4
+                    - if result.class.name == 'Contact'
+                      %i.icon-user
+                      - unless result.tag_list.include?("Company")
+                        = result.name
+                      - else
+                        = result.company
+      .tab-pane{:id => "contacts"}
+        - if @contacts.blank?
+          No Contacts found
+        - else
+          %table.table.table-striped{"data-provides" => "rowlink"}
+            %tbody
+            - @contacts.each do |contact|
+              %tr
+                %td{:style => 'display:none;'}
+                  = link_to t('.show', :default => t("helpers.links.show")), contact_path(contact)
+                %td
+                  %h4
+                    %i.icon-user
+                    - unless contact.tag_list.include?("Company")
+                      = contact.name
+                    - else
+                      = contact.company
+      .tab-pane{:id => "tasks"}
+        %h4
+          TASKS
+      .tab-pane{:id => "appointments"}
+        %h4
+          APPOINTMENTS
+      .tab-pane{:id => "emails"}
+        %h4
+          EMAILS

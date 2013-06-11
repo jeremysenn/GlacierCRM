@@ -1,0 +1,225 @@
+- model_class = Contact
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human
+
+%p
+  %strong= "Tags" + ':'
+  %br
+  = @contact.tag_list
+%p
+  %strong= model_class.human_attribute_name(:title) + ':'
+  %br
+  = @contact.title
+%p
+  %strong= model_class.human_attribute_name(:first_name) + ':'
+  %br
+  = @contact.first_name
+%p
+  %strong= model_class.human_attribute_name(:middle_name) + ':'
+  %br
+  = @contact.middle_name
+%p
+  %strong= model_class.human_attribute_name(:last_name) + ':'
+  %br
+  = @contact.last_name
+%p
+  %strong= model_class.human_attribute_name(:suffix) + ':'
+  %br
+  = @contact.suffix
+%p
+  %strong= model_class.human_attribute_name(:company) + ':'
+  %br
+  = @contact.company
+%p
+  %strong= model_class.human_attribute_name(:department) + ':'
+  %br
+  = @contact.department
+%p
+  %strong= model_class.human_attribute_name(:job_title) + ':'
+  %br
+  = @contact.job_title
+%p
+  %strong= model_class.human_attribute_name(:business_street) + ':'
+  %br
+  = @contact.business_street
+%p
+  %strong= model_class.human_attribute_name(:business_street_2) + ':'
+  %br
+  = @contact.business_street_2
+%p
+  %strong= model_class.human_attribute_name(:business_street_3) + ':'
+  %br
+  = @contact.business_street_3
+%p
+  %strong= model_class.human_attribute_name(:business_city) + ':'
+  %br
+  = @contact.business_city
+%p
+  %strong= model_class.human_attribute_name(:business_state) + ':'
+  %br
+  = @contact.business_state
+%p
+  %strong= model_class.human_attribute_name(:business_postal_code) + ':'
+  %br
+  = @contact.business_postal_code
+%p
+  %strong= model_class.human_attribute_name(:home_street) + ':'
+  %br
+  = @contact.home_street
+%p
+  %strong= model_class.human_attribute_name(:home_street_2) + ':'
+  %br
+  = @contact.home_street_2
+%p
+  %strong= model_class.human_attribute_name(:home_street_3) + ':'
+  %br
+  = @contact.home_street_3
+%p
+  %strong= model_class.human_attribute_name(:home_city) + ':'
+  %br
+  = @contact.home_city
+%p
+  %strong= model_class.human_attribute_name(:home_state) + ':'
+  %br
+  = @contact.home_state
+%p
+  %strong= model_class.human_attribute_name(:home_postal_code) + ':'
+  %br
+  = @contact.home_postal_code
+%p
+  %strong= model_class.human_attribute_name(:other_street) + ':'
+  %br
+  = @contact.other_street
+%p
+  %strong= model_class.human_attribute_name(:other_street_2) + ':'
+  %br
+  = @contact.other_street_2
+%p
+  %strong= model_class.human_attribute_name(:other_street_3) + ':'
+  %br
+  = @contact.other_street_3
+%p
+  %strong= model_class.human_attribute_name(:other_city) + ':'
+  %br
+  = @contact.other_city
+%p
+  %strong= model_class.human_attribute_name(:other_state) + ':'
+  %br
+  = @contact.other_state
+%p
+  %strong= model_class.human_attribute_name(:other_postal_code) + ':'
+  %br
+  = @contact.other_postal_code
+%p
+  %strong= model_class.human_attribute_name(:assistant_phone) + ':'
+  %br
+  = @contact.assistant_phone
+%p
+  %strong= model_class.human_attribute_name(:business_fax) + ':'
+  %br
+  = @contact.business_fax
+%p
+  %strong= model_class.human_attribute_name(:business_phone) + ':'
+  %br
+  = @contact.business_phone
+%p
+  %strong= model_class.human_attribute_name(:business_phone_2) + ':'
+  %br
+  = @contact.business_phone_2
+%p
+  %strong= model_class.human_attribute_name(:home_fax) + ':'
+  %br
+  = @contact.home_fax
+%p
+  %strong= model_class.human_attribute_name(:home_phone) + ':'
+  %br
+  = @contact.home_phone
+%p
+  %strong= model_class.human_attribute_name(:home_phone_2) + ':'
+  %br
+  = @contact.home_phone_2
+%p
+  %strong= model_class.human_attribute_name(:mobile_phone) + ':'
+  %br
+  = @contact.mobile_phone
+%p
+  %strong= model_class.human_attribute_name(:other_fax) + ':'
+  %br
+  = @contact.other_fax
+%p
+  %strong= model_class.human_attribute_name(:other_phone) + ':'
+  %br
+  = @contact.other_phone
+%p
+  %strong= model_class.human_attribute_name(:primary_phone) + ':'
+  %br
+  = @contact.primary_phone
+%p
+  %strong= model_class.human_attribute_name(:anniversary) + ':'
+  %br
+  = @contact.anniversary
+%p
+  %strong= model_class.human_attribute_name(:assistant_name) + ':'
+  %br
+  = @contact.assistant_name
+%p
+  %strong= model_class.human_attribute_name(:billing_information) + ':'
+  %br
+  = @contact.billing_information
+%p
+  %strong= model_class.human_attribute_name(:birthday) + ':'
+  %br
+  = @contact.birthday
+%p
+  %strong= model_class.human_attribute_name(:business_address_po_box) + ':'
+  %br
+  = @contact.business_address_po_box
+%p
+  %strong= model_class.human_attribute_name(:categories) + ':'
+  %br
+  = @contact.categories
+%p
+  %strong= model_class.human_attribute_name(:children) + ':'
+  %br
+  = @contact.children
+%p
+  %strong= model_class.human_attribute_name(:email) + ':'
+  %br
+  = @contact.email
+%p
+  %strong= model_class.human_attribute_name(:email_display_name) + ':'
+  %br
+  = @contact.email_display_name
+%p
+  %strong= model_class.human_attribute_name(:email_2) + ':'
+  %br
+  = @contact.email_2
+%p
+  %strong= model_class.human_attribute_name(:email_2_display_name) + ':'
+  %br
+  = @contact.email_2_display_name
+%p
+  %strong= model_class.human_attribute_name(:email_3) + ':'
+  %br
+  = @contact.email_3
+%p
+  %strong= model_class.human_attribute_name(:email_3_display_name) + ':'
+  %br
+  = @contact.email_3_display_name
+%p
+  %strong= model_class.human_attribute_name(:notes) + ':'
+  %br
+  = @contact.notes
+%p
+  %strong= model_class.human_attribute_name(:spouse) + ':'
+  %br
+  = @contact.spouse
+%p
+  %strong= model_class.human_attribute_name(:webpage) + ':'
+  %br
+  = @contact.webpage
+
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")), contacts_path, :class => 'btn'
+  = link_to t('.edit', :default => t("helpers.links.edit")), edit_contact_path(@contact), :class => 'btn'
+  = link_to t('.destroy', :default => t("helpers.links.destroy")), contact_path(@contact), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

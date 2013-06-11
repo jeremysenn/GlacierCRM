@@ -1,17 +1,104 @@
-= link_to "Glaciercrm", root_path, :class => 'brand'
-%ul.nav
+%a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+  %span.icon-bar
+  %span.icon-bar
+  %span.icon-bar
+%a.brand{:href => root_path}
+  = image_tag("moose_logo_small.png")
+  = current_user.company.name if user_signed_in?
+.nav-collapse.collapse
   - if user_signed_in?
-    %li
-      = link_to 'Logout', destroy_user_session_path, :method=>'delete'
+    %ul.nav
+      %li.dropdown{:class => params[:controller] == "contacts" ? "active" : ""}
+        %a{:href => '#', :class => 'dropdown-toggle', :data => {:toggle => 'dropdown'}}
+          %strong
+            %i.icon-user
+            Contacts
+            %b.caret
+        %ul.dropdown-menu
+          %li
+            %a{:href => contacts_path}
+              All Contacts
+          %li
+            %a{:href => new_contact_path}
+              New Contact
+      %li.dropdown{:class => params[:controller] == "projects" ? "active" : ""}
+        %a{:href => '#', :class => 'dropdown-toggle', :data => {:toggle => 'dropdown'}}
+          %strong
+            %i.icon-star-empty
+            Projects
+            %b.caret
+        %ul.dropdown-menu
+          %li
+            %a{:href => nil}
+              New Project
+          %li
+            %a{:href => nil}
+              All Projects
+          %li.divider
+          %li
+            %a{:href => nil}
+              %i.icon-tasks
+              Tasks
+          %li.divider
+          %li
+            %a{:href => nil}
+              %i.icon-calendar
+              Appointments
+          %li.divider
+          %li
+            %a{:href => nil}
+              %i.icon-pencil
+              Emails
+    .navbar-form.pull-right
+      = form_tag('/searches', :method => "get", :class => "navbar-search form-search") do
+        .input-append
+          = text_field_tag :q, nil, :placeholder => "Search", :id => "appendedInputButton", :class => 'span3 search-query'
+          = button_tag(:type => 'submit', :class => 'btn') do
+            %i.icon-search
+      %ul.nav.pull-right
+        %li.divider-vertical
+        %li.dropdown
+          %a{:href => '#', :class => 'dropdown-toggle', :data => {:toggle => 'dropdown'}}
+            %strong
+              %i.icon-cog
+              %b.caret
+          %ul.dropdown-menu
+            %li
+              %a{:href => edit_user_registration_path}
+                %strong= raw("#{current_user.name}")
+                %br
+                %small
+                  %i.icon-edit
+                  = "Edit settings"
+            %li.divider
+              - if current_user.has_role? :admin
+                %li= link_to('Users', users_path)
+                %li.divider
+                %li= link_to('Companies', companies_path)
+                %li.divider
+              %li= link_to '<i class="icon-question-sign"></i> Help'.html_safe, '#'
+              %li= link_to '<i class="icon-off"></i> Log out'.html_safe, destroy_user_session_path, :method=>'delete', :confirm => "Are you sure you want to log out?", :title => "Log out"
+
   - else
-    %li
-      = link_to 'Login', new_user_session_path
-  - if user_signed_in?
-    %li
-      = link_to 'Edit account', edit_user_registration_path
-    - if current_user.has_role? :admin
+    %ul.nav
+      %li= link_to "WHAT IS IT?", '#'
+      %li= link_to "HOW IT WORKS", '#'
+      %li= link_to "ABOUT US", '#'
+
+- if false
+  %ul.nav
+    - if user_signed_in?
       %li
-        = link_to 'Admin', users_path
-  - else
-    %li
-      = link_to 'Sign up', new_user_registration_path
+        = link_to 'Logout', destroy_user_session_path, :method=>'delete'
+    - else
+      %li
+        = link_to 'Login', new_user_session_path
+    - if user_signed_in?
+      %li
+        = link_to 'Edit account', edit_user_registration_path
+      - if current_user.has_role? :admin
+        %li
+          = link_to 'Admin', users_path
+    - else
+      %li
+        = link_to 'Sign up', new_user_registration_path
