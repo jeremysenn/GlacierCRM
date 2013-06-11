@@ -1,4 +1,6 @@
 class ContactsController < ApplicationController
+  before_filter :authenticate_user!
+
   def index
 #    @contacts = Contact.order(:last_name).page(params[:page]).per(50)
     @contacts = current_user.company.contacts.order(:last_name)
