@@ -34,22 +34,31 @@
               = image_tag("moose_logo_small.png")
             .nav-collapse.collapse
               %ul.nav
-                %li= link_to "WHAT IS IT?", '#'
-                %li= link_to "HOW IT WORKS", '#'
-                %li= link_to "ABOUT US", '#'
+                %li
+                  %a{:href => '#'}
+                    %i.icon-question-sign
+                    WHAT IS IT?
+                %li
+                  %a{:href => '#'}
+                    %i.icon-road
+                    HOW IT WORKS
+                %li
+                  %a{:href => '#'}
+                    %i.icon-comment
+                    ABOUT US
               - unless current_user
                 .navbar-form.pull-right
                   = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-search' }) do |f|
                     = f.input_field :email, :label => false, :autofocus => true, :placeholder => "Email", :input_html => {:class => 'input-medium'}
                     = f.input_field :password, :label => false, :placeholder => "Password", :input_html => {:class => 'input-medium'}
-                    = f.button :submit, "Sign in", :class => 'btn btn-primary'
+                    = f.button :submit, 'Sign in'.html_safe, :class => 'btn btn-success'
 
       = yield
       #footer
         .container-narrow
           %p{:class => "muted credit", :style => "text-align:center"}
             = image_tag("moose_logo_small.png")
-            = "GlacierWealth CRM - Copyright #{Date.today.year}"
+            = "GlacierWealth Runway - Copyright #{Date.today.year}"
 
 :javascript
   var $alert = $('.alert').alert()

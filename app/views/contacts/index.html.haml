@@ -38,7 +38,7 @@
               %td= client.mobile_phone
               %td= client.home_phone
               %td= client.business_phone
-              %td= (client.anniversary_age.to_i + 1).to_s
+              %td= client.years_as_client
               %td= mail_to client.email
     .tab-pane{:id => "companies"}
       %table.table.table-striped{"data-provides" => "rowlink"}

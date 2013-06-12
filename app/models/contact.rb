@@ -26,6 +26,14 @@ class Contact < ActiveRecord::Base
     end
   end
 
+  def years_as_client
+    (anniversary_age.to_i + 1).to_s
+  end
+
+  def pretty_home_address
+    (home_street + '<br>' + home_city + ', ' + home_state + ' ' + home_postal_code).html_safe
+  end
+
   ### Import CSV File ###
   def self.import(file)
     ### Use this loop instead if not updating records ###

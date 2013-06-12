@@ -17,11 +17,31 @@
             %div{:id => "client" + client.id.to_s, :class => "modal", :style => "display:none;"}
               .modal-header
                 = link_to "×", '#', :class => "close", "data-dismiss" => "modal"
-                = "#{client.name}"
+                %strong= "#{client.name}"
+                %p= "Age #{client.birthday_age}"
               .modal-body
-                %p= client.mobile_phone
-                %p= client.home_phone
+                .span6
+                  - unless client.mobile_phone.blank?
+                    %p
+                      %strong Mobile
+                      = client.mobile_phone
+                  - unless client.home_phone.blank?
+                    %p
+                      %strong Home
+                      = client.home_phone
+                  - unless client.business_phone.blank?
+                    %p
+                      %strong Business
+                      = client.business_phone
+                  %p
+                    %strong Years as Client
+                    = client.years_as_client
+                .span6
+                  - unless client.home_street.blank?
+                    %strong Home Address
+                    %p= client.pretty_home_address
               .modal-footer
+                = link_to 'Show more', contact_path(client), :class => 'btn btn-success'
                 = link_to 'Close', '#', :class => 'btn', "data-dismiss" => "modal"
   .span4
     %h4 
