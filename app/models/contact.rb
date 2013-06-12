@@ -31,7 +31,31 @@ class Contact < ActiveRecord::Base
   end
 
   def pretty_home_address
-    (home_street + '<br>' + home_city + ', ' + home_state + ' ' + home_postal_code).html_safe
+    unless home_street.blank?
+      return (home_street + '<br>' + home_city + ', ' + home_state + ' ' + home_postal_code).html_safe
+    else
+      nil
+    end
+  end
+
+  def pretty_business_address
+    unless business_street.blank?
+      return (business_street + '<br>' + business_city + ', ' + business_state + ' ' + business_postal_code).html_safe
+    else
+      nil
+    end
+  end
+
+  def pretty_other_address
+    unless other_street.blank?
+      return (other_street + '<br>' +other_city + ', ' + other_state + ' ' + other_postal_code).html_safe
+    else
+      nil
+    end
+  end
+
+  def tagged_with(tag)
+    tag_list.include?(tag)
   end
 
   ### Import CSV File ###

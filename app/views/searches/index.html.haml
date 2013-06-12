@@ -43,7 +43,7 @@
                 %td
                   - if result.class.name == 'Contact'
                     %i.icon-user
-                    - unless result.tag_list.include?("Company")
+                    - unless result.tagged_with("Company")
                       = result.name
                     - else
                       = result.company

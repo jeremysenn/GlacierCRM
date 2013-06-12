@@ -37,7 +37,7 @@
                     %strong Years as Client
                     = client.years_as_client
                 .span6
-                  - unless client.home_street.blank?
+                  - unless client.pretty_home_address.nil?
                     %strong Home Address
                     %p= client.pretty_home_address
               .modal-footer

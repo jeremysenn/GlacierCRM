@@ -1,11 +1,78 @@
 - model_class = Contact
-.page-header
-  %h1=t '.title', :default => model_class.model_name.human
+.row-fluid
+  .span3
+    .well.sidebar-nav
+      - if @contact.tagged_with("Client")
+        %h4
+          %i.icon-user
+          = @contact.name
+        %p= link_to_function 'More Details <i class="icon-chevron-down"></i>'.html_safe, "$('#client_details').show(); $(this).hide();", :id => 'show_client_details', :class => 'btn btn-small'
+        #client_details{:style => 'display:none'}
+          %p= link_to_function 'Less Details <i class="icon-chevron-up"></i>'.html_safe, "$('#show_client_details').show(); $(client_details).hide();", :class => 'btn btn-small'
+          %p
+            - unless @contact.email.blank?
+              = mail_to @contact.email
+            - unless @contact.email_2.blank?
+              = mail_to @contact.email_2
+            - unless @contact.email_3.blank?
+              = mail_to @contact.email_3
+          - unless @contact.pretty_home_address.nil?
+            %strong Home Address
+            %p= @contact.pretty_home_address
+          - unless @contact.pretty_business_address.nil?
+            %strong Business Address
+            %p= @contact.pretty_business_address
+          - unless @contact.pretty_other_address.nil?
+            %strong Other Address
+            %p= @contact.pretty_other_address
+          - unless @contact.home_phone.blank?
+            %p
+              %strong Home
+              = @contact.home_phone
+          - unless @contact.mobile_phone.blank?
+            %p
+              %strong Mobile
+              = @contact.mobile_phone
+          - unless @contact.business_phone.blank?
+            %p
+              %strong Business
+              = @contact.business_phone
+          - unless @contact.home_fax.blank?
+            %p
+              %strong Home Fax
+              = @contact.home_fax
+          - unless @contact.business_fax.blank?
+            %p
+              %strong Business Fax
+              = @contact.business_fax
+          %p
+            %strong Age
+            = @contact.birthday_age
+          %p
+            %strong Birthday
+            = @contact.birthday.strftime("%b %-d %Y")
+          %p
+            %strong Years as Client
+            = @contact.years_as_client
+          - unless @contact.spouse.blank?
+            %p
+              %strong Spouse
+              = @contact.spouse
+          - unless @contact.children.blank?
+            %p
+              %strong Children
+              = @contact.children
+          %p
+            %strong= "Tags" + ':'
+            %br
+            = @contact.tag_list
+          - unless @contact.notes.blank?
+            %p
+              %strong Notes
+              = simple_format(@contact.notes)
 
-%p
-  %strong= "Tags" + ':'
-  %br
-  = @contact.tag_list
+  .span9
+    .well
 %p
   %strong= model_class.human_attribute_name(:title) + ':'
   %br
