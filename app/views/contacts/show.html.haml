@@ -73,6 +73,51 @@
 
   .span9
     .well
+      .tabbable{}
+        .btn-group
+          %ul.nav.nav-pills
+            %li.active
+              %a{:href => "#projects", :data => {:toggle => "tab"}}
+                %button.btn
+                  %strong
+                    %i.icon-star-empty
+                    Projects
+            %li
+              %a{:href => "#appointments", :data => {:toggle => "tab"}}
+                %button.btn
+                  %strong
+                    %i.icon-calendar
+                    Appointments
+            %li
+              %a{:href => "#tasks", :data => {:toggle => "tab"}}
+                %button.btn
+                  %strong
+                    %i.icon-tasks
+                    Tasks
+            %li
+              %a{:href => "#emails", :data => {:toggle => "tab"}}
+                %button.btn
+                  %strong
+                    %i.icon-pencil
+                    Emails
+            %li
+              %a{:href => "#documents", :data => {:toggle => "tab"}}
+                %button.btn
+                  %strong
+                    %i.icon-file
+                    Documents
+      .tab-content{}
+        .tab-pane.active{:id => "projects"}
+          Projects
+        .tab-pane{:id => "appointments"}
+          Appointments
+        .tab-pane{:id => "tasks"}
+          Tasks
+        .tab-pane{:id => "emails"}
+          Emails
+        .tab-pane{:id => "documents"}
+          Documents
+          %iframe{:allowscriptaccess => "always", :id => 'client_iframe', :allowFullScreen => "true", :frameborder => "0", :style => "margin-left: -231px; height: 1200px; margin-top: -314px; width: 926px;", :height => "430", :width => "640", :src => "https://glacierwealth.sharepoint.com/Client%20Documents/Forms/AllItems.aspx?RootFolder=%2FClient%20Documents%2FAllan%2C%20Jean%20and%20John&FolderCTID=0x01200085CE45CD61197743B2ADA7F3E7230301&View={6FF43817-46ED-4E34-B8D7-EF5102B55DDE}", :title => "Documents"}
 %p
   %strong= model_class.human_attribute_name(:title) + ':'
   %br
