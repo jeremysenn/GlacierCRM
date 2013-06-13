@@ -75,3 +75,7 @@ pickle-email-*.html
 
 # Ignore application configuration
 /config/application.yml
+
+# Sunspot Solr
+solr/data/development/*
+solr/pids/development/*

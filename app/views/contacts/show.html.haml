@@ -116,8 +116,8 @@
         .tab-pane{:id => "emails"}
           Emails
         .tab-pane{:id => "documents"}
-          Documents
-          %iframe{:allowscriptaccess => "always", :id => 'client_iframe', :allowFullScreen => "true", :frameborder => "0", :style => "margin-left: -231px; height: 1200px; margin-top: -314px; width: 926px;", :height => "430", :width => "640", :src => "https://glacierwealth.sharepoint.com/Client%20Documents/Forms/AllItems.aspx?RootFolder=%2FClient%20Documents%2FAllan%2C%20Jean%20and%20John&FolderCTID=0x01200085CE45CD61197743B2ADA7F3E7230301&View={6FF43817-46ED-4E34-B8D7-EF5102B55DDE}", :title => "Documents"}
+          No Documents
+          %iframe{:allowscriptaccess => "always", :id => 'client_iframe', :allowFullScreen => "true", :frameborder => "0", :style => "margin-left: 0px; height: 1200px; margin-top: 0px; width: 926px;", :height => "430", :width => "640", :src => "#{@contact.document_url}", :title => "Documents"}
 %p
   %strong= model_class.human_attribute_name(:title) + ':'
   %br
@@ -330,6 +330,10 @@
   %strong= model_class.human_attribute_name(:webpage) + ':'
   %br
   = @contact.webpage
+%p
+  %strong= model_class.human_attribute_name(:document_url) + ':'
+  %br
+  = @contact.document_url
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), contacts_path, :class => 'btn'

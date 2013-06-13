@@ -6,7 +6,7 @@ class Contact < ActiveRecord::Base
   attr_accessible :other_country_region, :assistant_phone, :business_fax,:business_phone, :business_phone_2, :home_fax, :home_phone
   attr_accessible :home_phone_2, :mobile_phone, :other_fax, :other_phone, :primary_phone,:anniversary, :assistant_name, :billing_information
   attr_accessible :birthday, :business_address_po_box, :categories, :children, :email, :email_display_name, :email_2, :email_2_display_name
-  attr_accessible :email_3, :email_3_display_name, :notes, :spouse, :webpage, :tag_list
+  attr_accessible :email_3, :email_3_display_name, :notes, :spouse, :webpage, :tag_list, :document_url
 
   acts_as_taggable
   acts_as_birthday :birthday
