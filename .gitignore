@@ -77,5 +77,7 @@ pickle-email-*.html
 /config/application.yml
 
 # Sunspot Solr
-solr/data/development/*
-solr/pids/development/*
+/solr/data/development/*
+/solr/pids/development/*
+/solr/data/development/index/segments.*
+/solr/pids/development/sunspot-solr-development.*

@@ -11,13 +11,14 @@ end
 gem 'mysql2'#, '< 0.3'
 gem 'acts-as-taggable-on' #Tags
 gem 'birthday' # Show years/age from dob, anniversaries, etc.
+gem 'whenever', :require => false #Cron jobs
 
 gem 'jquery-rails'
 gem "unicorn", ">= 4.3.1"
 gem "haml-rails", ">= 0.4"
 gem "html2haml", ">= 1.0.1", :group => :development
 gem 'less-rails'
-gem 'therubyracer', :platform => 'ruby'
+gem 'therubyracer', :platforms => :ruby
 gem "rspec-rails", ">= 2.12.2", :group => [:development, :test]
 gem "database_cleaner", ">= 1.0.0.RC1", :group => :test
 gem "email_spec", ">= 1.4.0", :group => :test

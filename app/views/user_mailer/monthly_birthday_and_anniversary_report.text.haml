@@ -1,0 +1,13 @@
+Birthdays This Month
+- unless @birthday_clients.blank?
+  - @birthday_clients.each do |birthday_client|
+    = birthday_client.name + " - " + birthday_client.birthday.change(:year => Date.today.year).strftime("%A %B #{birthday_client.birthday.day.ordinalize}")
+- else
+  Zilch, zip, nada
+
+Anniversaries This Month
+- unless @anniversary_clients.blank?
+  - @anniversary_clients.each do |anniversary_client|
+    = anniversary_client.name + " - " + anniversary_client.anniversary.change(:year => Date.today.year).strftime("%A %B #{anniversary_client.anniversary.day.ordinalize}")
+- else
+  Zilch, zip, nada

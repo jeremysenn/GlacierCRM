@@ -7,13 +7,17 @@
   %ul.nav.nav-pills
     %li.active
       %a{:href => "#clients", :data => {:toggle => "tab"}}
-        Clients
+        %button.btn
+          Clients
     %li
       %a{:href => "#companies", :data => {:toggle => "tab"}}
-        Companies
+        %button.btn
+          Companies
     %li
       %a{:href => "#personal_contacts", :data => {:toggle => "tab"}}
-        Personal
+        %button.btn
+          Personal
+  %hr{:style => "border: 1px solid #B7410E; margin-top:0px;"}
 - unless mobile_device?
   .tab-content{}
     .tab-pane.active{:id => "clients"}

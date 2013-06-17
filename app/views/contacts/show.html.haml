@@ -1,30 +1,33 @@
 - model_class = Contact
 .row-fluid
   .span3
-    .well.sidebar-nav
+    .sidebar-nav{:style => "border-right: 2px solid #B7410E; margin-right: 0; padding-right: 19px;"}
       - if @contact.tagged_with("Client")
         %h4
           %i.icon-user
           = @contact.name
-        %p= link_to_function 'More Details <i class="icon-chevron-down"></i>'.html_safe, "$('#client_details').show(); $(this).hide();", :id => 'show_client_details', :class => 'btn btn-small'
-        #client_details{:style => 'display:none'}
-          %p= link_to_function 'Less Details <i class="icon-chevron-up"></i>'.html_safe, "$('#show_client_details').show(); $(client_details).hide();", :class => 'btn btn-small'
-          %p
-            - unless @contact.email.blank?
-              = mail_to @contact.email
-            - unless @contact.email_2.blank?
-              = mail_to @contact.email_2
-            - unless @contact.email_3.blank?
-              = mail_to @contact.email_3
+        %p
+          - unless @contact.email.blank?
+            = mail_to @contact.email
+          - unless @contact.email_2.blank?
+            = mail_to @contact.email_2
+          - unless @contact.email_3.blank?
+            = mail_to @contact.email_3
           - unless @contact.pretty_home_address.nil?
-            %strong Home Address
-            %p= @contact.pretty_home_address
+            %p
+              %strong Home Address
+              %br
+              = @contact.pretty_home_address
           - unless @contact.pretty_business_address.nil?
-            %strong Business Address
-            %p= @contact.pretty_business_address
+            %p
+              %strong Business Address
+              %br
+              = @contact.pretty_business_address
           - unless @contact.pretty_other_address.nil?
-            %strong Other Address
-            %p= @contact.pretty_other_address
+            %p
+              %strong Other Address
+              %br
+              = @contact.pretty_other_address
           - unless @contact.home_phone.blank?
             %p
               %strong Home
@@ -45,6 +48,11 @@
             %p
               %strong Business Fax
               = @contact.business_fax
+        %p= link_to_function 'More Details <i class="icon-chevron-down"></i>'.html_safe, "$('#client_details').show(); $(this).hide();", :id => 'show_client_details', :class => 'btn btn-small'
+        
+
+        #client_details{:style => 'display:none'}
+          %p= link_to_function 'Less Details <i class="icon-chevron-up"></i>'.html_safe, "$('#show_client_details').show(); $(client_details).hide();", :class => 'btn btn-small'
           %p
             %strong Age
             = @contact.birthday_age
@@ -72,52 +80,51 @@
               = simple_format(@contact.notes)
 
   .span9
-    .well
-      .tabbable{}
-        .btn-group
-          %ul.nav.nav-pills
-            %li.active
-              %a{:href => "#projects", :data => {:toggle => "tab"}}
-                %button.btn
-                  %strong
-                    %i.icon-star-empty
-                    Projects
-            %li
-              %a{:href => "#appointments", :data => {:toggle => "tab"}}
-                %button.btn
-                  %strong
-                    %i.icon-calendar
-                    Appointments
-            %li
-              %a{:href => "#tasks", :data => {:toggle => "tab"}}
-                %button.btn
-                  %strong
-                    %i.icon-tasks
-                    Tasks
-            %li
-              %a{:href => "#emails", :data => {:toggle => "tab"}}
-                %button.btn
-                  %strong
-                    %i.icon-pencil
-                    Emails
-            %li
-              %a{:href => "#documents", :data => {:toggle => "tab"}}
-                %button.btn
-                  %strong
-                    %i.icon-file
-                    Documents
-      .tab-content{}
-        .tab-pane.active{:id => "projects"}
-          Projects
-        .tab-pane{:id => "appointments"}
-          Appointments
-        .tab-pane{:id => "tasks"}
-          Tasks
-        .tab-pane{:id => "emails"}
-          Emails
-        .tab-pane{:id => "documents"}
-          No Documents
-          %iframe{:allowscriptaccess => "always", :id => 'client_iframe', :allowFullScreen => "true", :frameborder => "0", :style => "margin-left: 0px; height: 1200px; margin-top: 0px; width: 926px;", :height => "430", :width => "640", :src => "#{@contact.document_url}", :title => "Documents"}
+    .tabbable{}
+      .btn-group
+        %ul.nav.nav-pills
+          %li.active
+            %a{:href => "#projects", :data => {:toggle => "tab"}}
+              %button.btn
+                %strong
+                  %i.icon-star-empty
+                  Projects
+          %li
+            %a{:href => "#appointments", :data => {:toggle => "tab"}}
+              %button.btn
+                %strong
+                  %i.icon-calendar
+                  Appointments
+          %li
+            %a{:href => "#tasks", :data => {:toggle => "tab"}}
+              %button.btn
+                %strong
+                  %i.icon-tasks
+                  Tasks
+          %li
+            %a{:href => "#emails", :data => {:toggle => "tab"}}
+              %button.btn
+                %strong
+                  %i.icon-pencil
+                  Emails
+          %li
+            %a{:href => "#documents", :data => {:toggle => "tab"}}
+              %button.btn
+                %strong
+                  %i.icon-file
+                  Documents
+      %hr{:style => "border: 1px solid #B7410E; margin-top:0px;"}
+    .tab-content{}
+      .tab-pane.active{:id => "projects"}
+        Projects
+      .tab-pane{:id => "appointments"}
+        Appointments
+      .tab-pane{:id => "tasks"}
+        Tasks
+      .tab-pane{:id => "emails"}
+        Emails
+      .tab-pane{:id => "documents"}
+        %iframe{:allowscriptaccess => "always", :id => 'client_iframe', :allowFullScreen => "true", :frameborder => "0", :style => "margin-left: 0px; height: 678px; margin-top: 0px; width: 826px;", :src => "#{@contact.document_url}", :title => "Documents"}
 %p
   %strong= model_class.human_attribute_name(:title) + ':'
   %br

@@ -1,13 +1,43 @@
 - model_class = Company
-.page-header
-  %h1=t '.title', :default => model_class.model_name.human
-
-%p
-  %strong= model_class.human_attribute_name(:name) + ':'
-  %br
-  = @company.name
-
+.row-fluid
+  .span3
+    .sidebar-nav{:style => "border-right: 2px solid #B7410E; margin-right: 0; padding-right: 19px;"}
+      %h4
+        %i.icon-briefcase
+        = @company.name
+      %p
+        %strong Users
+        - @company.users.each do |u|
+          %p= u.name
+  .span9
+    .tabbable{}
+      .btn-group
+        %ul.nav.nav-pills
+          %li.active
+            %a{:href => "#documents", :data => {:toggle => "tab"}}
+              %button.btn
+                %strong
+                  %i.icon-file
+                  Documents
+          %li
+            %a{:href => "#reports", :data => {:toggle => "tab"}}
+              %button.btn
+                %strong
+                  %i.icon-bar-chart
+                  Reports
+      %hr{:style => "border: 1px solid #B7410E; margin-top:0px;"}
+      .tab-content{}
+        .tab-pane.active{:id => "documents"}
+          %iframe{:allowscriptaccess => "always", :id => 'company_iframe', :allowFullScreen => "true", :frameborder => "0", :style => "margin-left: 0px; height: 678px; margin-top: 0px; width: 826px;", :src => "#{@company.document_url}", :title => "Documents"}
+        .tab-pane{:id => "reports"}
+          Reports
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), companies_path, :class => 'btn'
   = link_to t('.edit', :default => t("helpers.links.edit")), edit_company_path(@company), :class => 'btn'
   = link_to t('.destroy', :default => t("helpers.links.destroy")), company_path(@company), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
+
+:javascript
+  $(function () {
+  var activeTab = $('[href=' + location.hash + ']');
+  activeTab && activeTab.tab('show');
+  });

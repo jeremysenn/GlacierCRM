@@ -48,7 +48,7 @@ class Contact < ActiveRecord::Base
 
   def pretty_other_address
     unless other_street.blank?
-      return (other_street + '<br>' +other_city + ', ' + other_state + ' ' + other_postal_code).html_safe
+      return (other_street + '<br>' + other_city + ', ' + other_state + ' ' + other_postal_code).html_safe
     else
       nil
     end
