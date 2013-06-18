@@ -1,0 +1,35 @@
+%h4
+  %i.icon-user
+  = @contact.company
+- unless @contact.name.blank?
+  %p
+    %strong Contact
+    = @contact.name
+- unless @contact.email.blank?
+  %p= mail_to @contact.email
+- unless @contact.business_fax.blank?
+  %p
+    %strong Fax
+    = @contact.business_fax
+- unless @contact.business_phone.blank?
+  %p
+    %strong Phone
+    = @contact.business_phone
+- unless @contact.mobile_phone.blank?
+  %p
+    %strong Mobile
+    = @contact.mobile_phone
+- unless @contact.pretty_business_address.nil?
+  %p
+    %strong Business Address
+    %br
+    = @contact.pretty_business_address
+- unless @contact.webpage.blank?
+  %p
+    %strong Webpage
+    = @contact.webpage
+- unless @contact.notes.blank?
+  %p
+    %strong Notes
+    = simple_format(@contact.notes)
+
