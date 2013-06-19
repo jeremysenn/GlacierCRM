@@ -1,68 +1,103 @@
 = simple_form_for @contact, :html => { :class => 'form-horizontal' } do |f|
 
   %table
-    %tr
-      %td= f.input :tag_list
-    %tr
-      %td= f.input :title, :placeholder => "Title", :label => "Title", :input_html => {:class => 'input-medium'}
-      %td= f.input :first_name, :placeholder => "First Name", :label => "First Name", :input_html => {:class => 'input-medium'}
-      %td= f.input :middle_name, :placeholder => "Middle Name", :label => "Middle Name", :input_html => {:class => 'input-medium'}
-      %td= f.input :last_name, :placeholder => "Last Name", :label => "Last Name", :input_html => {:class => 'input-medium'}
-      %td= f.input :suffix, :placeholder => "Suffix", :label => "Suffix", :input_html => {:class => 'input-medium'}
-    %tr
-      %td= f.input :company, :placeholder => "Company", :label => "Company", :input_html => {:class => 'input-medium'}
-      %td= f.input :department, :placeholder => "Department", :label => "Department", :input_html => {:class => 'input-medium'}
-      %td= f.input :job_title, :placeholder => "Job Title", :label => "Job Title", :input_html => {:class => 'input-medium'}
-    %tr
-      %td= f.input :home_street, :input_html => {rows: 4, :class => 'input-medium'}
-      %td= f.input :email, :placeholder => "Email", :label => "Email", :input_html => {:class => 'input-medium'}
-
-  = f.input :business_street
-  = f.input :business_street_2
-  = f.input :business_street_3
-  = f.input :business_city
-  = f.input :business_state
-  = f.input :business_postal_code
-  = f.input :home_street
-  = f.input :home_street_2
-  = f.input :home_street_3
-  = f.input :home_city
-  = f.input :home_state
-  = f.input :home_postal_code
-  = f.input :other_street
-  = f.input :other_street_2
-  = f.input :other_street_3
-  = f.input :other_city
-  = f.input :other_state
-  = f.input :other_postal_code
-  = f.input :assistant_phone
-  = f.input :business_fax
-  = f.input :business_phone
-  = f.input :business_phone_2
-  = f.input :home_fax
-  = f.input :home_phone
-  = f.input :home_phone_2
-  = f.input :mobile_phone
-  = f.input :other_fax
-  = f.input :other_phone
-  = f.input :primary_phone
-  = f.input :anniversary
-  = f.input :assistant_name
-  = f.input :billing_information
-  = f.input :birthday
-  = f.input :business_address_po_box
-  = f.input :categories
-  = f.input :children
-  = f.input :email
-  = f.input :email_display_name
-  = f.input :email_2
-  = f.input :email_2_display_name
-  = f.input :email_3
-  = f.input :email_3_display_name
-  = f.input :notes
-  = f.input :spouse
-  = f.input :webpage
-  = f.input :document_url
+    %tbody
+      %tr
+        %td= f.input :tag_list, :label => 'Type', :as => :radio_buttons, :collection => Tag.all.collect {|t| [ t.name]}, :include_blank => false
+        %td= f.input :title, :placeholder => "Title", :label => "Title", :input_html => {:class => 'input-small'}
+        %td= f.input :suffix, :placeholder => "Suffix", :label => "Suffix", :input_html => {:class => 'input-small'}
+      %tr
+        %td= f.input :first_name, :placeholder => "First Name", :label => "First Name", :input_html => {:class => 'input-medium'}
+        %td= f.input :middle_name, :placeholder => "Middle Name", :label => "Middle Name", :input_html => {:class => 'input-medium'}
+        %td= f.input :last_name, :placeholder => "Last Name", :label => "Last Name", :input_html => {:class => 'input-medium'}
+      %tr
+        %td= f.input :birthday, :placeholder => "Birthday", :label => "Birthday", :input_html => {:class => 'input-medium'}
+        %td= f.input :anniversary, :placeholder => "Anniversary", :label => "Anniversary", :input_html => {:class => 'input-medium'}
+      %tr
+        %td= f.input :spouse, :placeholder => "Spouse", :label => "Spouse", :input_html => {:class => 'input-medium'}
+        %td= f.input :children, :placeholder => "Children", :label => "Children", :input_html => {:class => 'input-large'}
+        %td= f.input :assistant_name, :placeholder => "Assistant Name", :label => "Assistant Name", :input_html => {:class => 'input-medium'}
+      %tr
+        %td= f.input :document_url, :placeholder => "Document URL", :label => "Document URL", :input_html => {:class => 'input-large'}
+        %td= f.input :webpage, :placeholder => "Webpage", :label => "Webpage", :input_html => {:class => 'input-large'}
+      %tr
+        %td= f.input :company, :placeholder => "Company", :label => "Company", :input_html => {:class => 'input-medium'}
+        %td= f.input :department, :placeholder => "Department", :label => "Department", :input_html => {:class => 'input-medium'}
+        %td= f.input :job_title, :placeholder => "Job Title", :label => "Job Title", :input_html => {:class => 'input-medium'}
+  %hr
+  %table
+    %tbody
+      %tr
+        %td= f.input :email, :placeholder => "Email", :label => "Email", :input_html => {:class => 'input-large'}
+        %td= f.input :email_display_name, :placeholder => "Email Display Name", :label => "Email Display Name", :input_html => {:class => 'input-large'}
+      %tr
+        %td= f.input :email_2, :placeholder => "Email 2", :label => "Email 2", :input_html => {:class => 'input-large'}
+        %td= f.input :email_2_display_name, :placeholder => "Email 2 Display Name", :label => "Email 2 Display Name", :input_html => {:class => 'input-large'}
+      %tr
+        %td= f.input :email_3, :placeholder => "Email 3", :label => "Email 3", :input_html => {:class => 'input-large'}
+        %td= f.input :email_display_name, :placeholder => "Email 3 Display Name", :label => "Email 3 Display Name", :input_html => {:class => 'input-large'}
+  %hr
+  %table
+    %tbody
+      %tr
+        %td= f.input :home_phone, :placeholder => "Home Phone", :label => "Home Phone", :input_html => {:class => 'phone input-medium'}
+        %td= f.input :home_phone_2, :placeholder => "Home Phone 2", :label => "Home Phone 2", :input_html => {:class => 'phone input-medium'}
+        %td= f.input :mobile_phone, :placeholder => "Mobile Phone", :label => "Mobile Phone", :input_html => {:class => 'phone input-medium'}
+      %tr
+        %td= f.input :primary_phone, :placeholder => "Primary Phone", :label => "Primary Phone", :input_html => {:class => 'phone input-medium'}
+        %td= f.input :other_phone, :placeholder => "Other Phone", :label => "Other Phone", :input_html => {:class => 'phone input-medium'}
+      %tr
+        %td= f.input :business_phone, :placeholder => "Business Phone", :label => "Business Phone", :input_html => {:class => 'phone input-medium'}
+        %td= f.input :business_phone_2, :placeholder => "Business Phone 2", :label => "Business Phone 2", :input_html => {:class => 'phone input-medium'}
+        %td= f.input :assistant_phone, :placeholder => "Assistant Phone", :label => "Assistant Phone", :input_html => {:class => 'phone input-medium'}
+      %tr
+        %td= f.input :home_fax, :placeholder => "Home Fax", :label => "Home Fax", :input_html => {:class => 'phone input-medium'}
+        %td= f.input :business_fax, :placeholder => "Business Fax", :label => "Business Fax", :input_html => {:class => 'phone input-medium'}
+        %td= f.input :other_fax, :placeholder => "Other Fax", :label => "Other Fax", :input_html => {:class => 'phone input-medium'}
+  %hr
+  %table
+    %tbody
+      %tr
+        %td= f.input :home_street, :placeholder => "Home Street", :label => "Home Street", :input_html => {:class => 'input-medium'}
+        %td= f.input :home_street_2, :placeholder => "Home Street 2", :label => "Home Street 2", :input_html => {:class => 'input-medium'}
+        %td= f.input :home_street_3, :placeholder => "Home Street 3", :label => "Home Street 3", :input_html => {:class => 'input-medium'}
+      %tr
+        %td= f.input :home_city, :placeholder => "Home City", :label => "Home City", :input_html => {:class => 'input-medium'}
+        %td= f.input :home_state, :placeholder => "Home State", :label => "Home State", :input_html => {:class => 'input-medium'}
+        %td= f.input :home_postal_code, :placeholder => "Home Postal Code", :label => "Home Postal Code", :input_html => {:class => 'input-medium'}
+  %hr
+  %table
+    %tbody
+      %tr
+        %td= f.input :business_street, :placeholder => "Business Street", :label => "Business Street", :input_html => {:class => 'input-medium'}
+        %td= f.input :business_street_2, :placeholder => "Business Street 2", :label => "Business Street 2", :input_html => {:class => 'input-medium'}
+        %td= f.input :business_street_3, :placeholder => "Business Street 3", :label => "Business Street 3", :input_html => {:class => 'input-medium'}
+      %tr
+        %td= f.input :business_city, :placeholder => "Business City", :label => "Business City", :input_html => {:class => 'input-medium'}
+        %td= f.input :business_state, :placeholder => "Business State", :label => "Business State", :input_html => {:class => 'input-medium'}
+        %td= f.input :business_postal_code, :placeholder => "Business Postal Code", :label => "Business Postal Code", :input_html => {:class => 'input-medium'}
+      %tr
+        %td= f.input :business_address_po_box, :placeholder => "Business PO Box", :label => "Business PO Box", :input_html => {:class => 'input-medium'}
+        %td= f.input :billing_information, :placeholder => "Billing Information", :label => "Billing Information", :input_html => {:class => 'input-medium'}
+  %hr
+  %table
+    %tbody
+      %tr
+        %td= f.input :other_street, :placeholder => "Other Street", :label => "Other Street", :input_html => {:class => 'input-medium'}
+        %td= f.input :other_street_2, :placeholder => "Other Street 2", :label => "Other Street 2", :input_html => {:class => 'input-medium'}
+        %td= f.input :other_street_3, :placeholder => "Other Street 3", :label => "Other Street 3", :input_html => {:class => 'input-medium'}
+      %tr
+        %td= f.input :other_city, :placeholder => "Other City", :label => "Other City", :input_html => {:class => 'input-medium'}
+        %td= f.input :other_state, :placeholder => "Other State", :label => "Other State", :input_html => {:class => 'input-medium'}
+        %td= f.input :other_postal_code, :placeholder => "Other Postal Code", :label => "Other Postal Code", :input_html => {:class => 'input-medium'}
+  %table
+    %tbody
+      %tr
+        %td= f.input :notes, :input_html => {:class => 'span6', :rows => 10}
+  
   .form-actions
     = f.button :submit, :class => 'btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), contacts_path, :class => 'btn'
+
+%script
+  $(".phone").mask("(999) 999-9999");
