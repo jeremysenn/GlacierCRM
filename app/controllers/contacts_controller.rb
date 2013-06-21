@@ -1,9 +1,10 @@
 class ContactsController < ApplicationController
   before_filter :authenticate_user!
+  load_and_authorize_resource
 
   def index
 #    @contacts = Contact.order(:last_name).page(params[:page]).per(50)
-    @contacts = current_user.company.contacts.order(:last_name)
+#    @contacts = current_user.company.contacts.order(:last_name)
     @clients = current_user.company.contacts.order(:last_name).tagged_with("Client")
     @companies = current_user.company.contacts.order(:company).tagged_with("Company")
     @personal_contacts = current_user.company.contacts.order(:last_name).tagged_with("Personal")

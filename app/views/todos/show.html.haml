@@ -1,0 +1,27 @@
+- model_class = Todo
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human
+
+%p
+  %strong= model_class.human_attribute_name(:title) + ':'
+  %br
+  = @todo.title
+%p
+  %strong= model_class.human_attribute_name(:description) + ':'
+  %br
+  = @todo.description
+%p
+  %strong= model_class.human_attribute_name(:completed) + ':'
+  %br
+  = @todo.completed
+
+- unless @todo.project_id.blank?
+  %p
+    %strong= model_class.human_attribute_name(:project_id) + ':'
+    %br
+    = @todo.project_id
+
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")), todos_path, :class => 'btn'
+  = link_to t('.edit', :default => t("helpers.links.edit")), edit_todo_path(@todo), :class => 'btn'
+  = link_to t('.destroy', :default => t("helpers.links.destroy")), todo_path(@todo), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

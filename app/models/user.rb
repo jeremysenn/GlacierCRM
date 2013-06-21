@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
 
   belongs_to :company
   has_many :contacts
+  has_many :todos
 
   def clients
     contacts.tagged_with("Client")

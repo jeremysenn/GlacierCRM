@@ -1,4 +1,6 @@
 GlacierCRM::Application.routes.draw do
+  resources :todos
+
   resources :companies
 
 #  resources :contacts

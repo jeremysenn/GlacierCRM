@@ -13,6 +13,9 @@ class Contact < ActiveRecord::Base
   acts_as_birthday :anniversary
   belongs_to :user
 
+  validates :first_name, :presence => true
+  validates :last_name, :presence => true
+
   ### SUNSPOT SOLR SEARCHING ###
   searchable do
     text :name, :company

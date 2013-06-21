@@ -3,7 +3,7 @@
   %table
     %tbody
       %tr
-        %td= f.input :tag_list, :label => 'Type', :as => :radio_buttons, :collection => Tag.all.collect {|t| [ t.name]}, :include_blank => false
+        %td= f.input :tag_list, :label => 'Type', :as => :radio_buttons, :collection => Tag.all.collect {|t| [ t.name]}
         %td= f.input :title, :placeholder => "Title", :label => "Title", :input_html => {:class => 'input-small'}
         %td= f.input :suffix, :placeholder => "Suffix", :label => "Suffix", :input_html => {:class => 'input-small'}
       %tr

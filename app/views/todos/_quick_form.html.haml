@@ -1,0 +1,10 @@
+%table.table.table-striped{:id => 'quick_todo_table'}
+  %tbody
+    %tr
+      = form_for @todo, remote: true do |f|
+        %td= f.text_field :title, :autofocus => true
+        = f.hidden_field :user_id, :value => current_user.id
+        %td
+          %button{:type => 'submit', :class => 'btn btn-mini btn-primary'}
+            %i.icon-save
+        %td= link_to_function "<i class='icon-remove'></i>".html_safe, "$('#quick_todo_table').remove(); $('#new_link').show();", :class => 'btn btn-mini btn-danger'

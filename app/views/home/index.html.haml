@@ -1,7 +1,7 @@
 .page-header
   %h3
-    %i.icon-dashboard
-    = "Dashboard"
+    %i.icon-road
+    = "Runway"
 
 .row-fluid
   .span2
@@ -9,11 +9,11 @@
       %i.icon-user
       Clients
     %div{:style => "height: 300px !important;overflow: scroll;"}
-      %table.table-hover
+      %table.table.table-striped.table-hover
         %tbody
           - @clients.each do |client|
             %tr
-              %td= link_to client.name, "#client" + client.id.to_s, "data-toggle" => "modal", :type => "button", :class => 'thumbnail'
+              %td= link_to client.name, "#client" + client.id.to_s, "data-toggle" => "modal", :type => "button"
             %div{:id => "client" + client.id.to_s, :class => "modal", :style => "display:none;"}
               .modal-header
                 = link_to "×", '#', :class => "close", "data-dismiss" => "modal"
@@ -43,15 +43,36 @@
               .modal-footer
                 = link_to 'Show more', contact_path(client), :class => 'btn btn-success'
                 = link_to 'Close', '#', :class => 'btn', "data-dismiss" => "modal"
-  .span4
+  .span3
     %h4 
-      %i.icon-star-empty
+      %i.icon-star
       Projects
   .span4
     %h4 
       %i.icon-calendar
       Calendar
-  .span2
+  .span3
     %h4
       %i.icon-ok-sign
       To Do
+      = link_to "<i class='icon-plus'></i>".html_safe, new_todo_path, id: "new_link", remote: true,:class => 'btn btn-mini btn-success pull-right'
+    %table.table.table-striped{:id => 'todo_table'}
+      %tbody
+        - @todos.order(:completed).each do |todo|
+          %tr{:id => "todo_#{todo.id}"}
+            %td= best_in_place todo, :completed, type: :checkbox, :collection => ["<i class='icon-check-empty'></i>".html_safe, "<i class='icon-check'></i>".html_safe]
+            %td{:class => todo.completed? ? "muted" : "", :style => todo.completed? ? "text-decoration: line-through;" : ""}= best_in_place todo, :title
+            %td
+              = link_to "<i class='icon-ellipsis-horizontal'></i>".html_safe, "#todo" + todo.id.to_s, "data-toggle" => "modal", :class => 'btn btn-mini'
+              = link_to "<i class='icon-remove'></i>".html_safe, todo_path(todo), :remote => true, :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure you want to completely delete this item?')) }, :class => 'btn btn-mini btn-danger'
+          %div{:id => "todo" + todo.id.to_s, :class => "modal", :style => "display:none;"}
+            .modal-header
+              = link_to "×", '#', :class => "close", "data-dismiss" => "modal"
+              %strong= "#{todo.title}"
+              %p= todo.created_at.strftime("%-m.%-d.%y")
+            .modal-body
+              %p= todo.description
+              %p= todo.completed? ? 'Completed' : 'Not Completed'
+            .modal-footer
+              = link_to 'Show more', todo_path(todo), :class => 'btn btn-success'
+              = link_to 'Close', '#', :class => 'btn', "data-dismiss" => "modal"
