@@ -13,9 +13,9 @@ gem 'acts-as-taggable-on' #Tags
 gem 'birthday' # Show years/age from dob, anniversaries, etc.
 gem 'whenever', :require => false #Cron jobs
 gem 'best_in_place' #In place editing
-gem "jquery-ui-rails" #For jquery-ui support
+#gem "jquery-ui-rails" #For jquery-ui support
 
-gem 'jquery-rails',   '~> 3.0.0'
+gem 'jquery-rails'
 gem "unicorn", ">= 4.3.1"
 gem "haml-rails", ">= 0.4"
 gem "html2haml", ">= 1.0.1", :group => :development

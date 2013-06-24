@@ -4,3 +4,10 @@
 
 jQuery ->
   $('.best_in_place').best_in_place()
+
+  $(".strike_if_necessary").bind "ajax:success", ->
+    alert($(this).data('completed'))
+    #$(this).parent().next().remove()
+
+$(".best_in_place").bind "ajax:success", ->
+  alert "Name updated for " + $(this).data("userName")

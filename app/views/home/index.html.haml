@@ -60,7 +60,7 @@
       %tbody
         - @todos.order(:completed).each do |todo|
           %tr{:id => "todo_#{todo.id}"}
-            %td= best_in_place todo, :completed, type: :checkbox, :collection => ["<i class='icon-check-empty'></i>".html_safe, "<i class='icon-check'></i>".html_safe]
+            %td= best_in_place todo, :completed, type: :checkbox, :classes => 'strike_if_necessary', :data => {:completed => todo.completed}, :collection => ["<i class='icon-check-empty'></i>".html_safe, "<i class='icon-check'></i>".html_safe]
             %td{:class => todo.completed? ? "muted" : "", :style => todo.completed? ? "text-decoration: line-through;" : ""}= best_in_place todo, :title
             %td
               = link_to "<i class='icon-ellipsis-horizontal'></i>".html_safe, "#todo" + todo.id.to_s, "data-toggle" => "modal", :class => 'btn btn-mini'
