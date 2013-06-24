@@ -26,12 +26,20 @@ class User < ActiveRecord::Base
     clients.find_birthdays_for(Date.today, Date.today.advance(:months => 1))
   end
 
+  def client_birthdays_this_year
+    clients.find_birthdays_for(Date.today.beginning_of_year, Date.today.end_of_year)
+  end
+
   def client_anniversaries_this_week
     clients.find_anniversaries_for(Date.today, Date.today.advance(:weeks => 1))
   end
 
   def client_anniversaries_this_month
     clients.find_anniversaries_for(Date.today, Date.today.advance(:months => 1))
+  end
+
+  def client_anniversaries_this_year
+    clients.find_anniversaries_for(Date.today.beginning_of_year, Date.today.end_of_year)
   end
 
   ##############################
@@ -44,6 +52,10 @@ class User < ActiveRecord::Base
 
   def send_birthday_and_anniversaries_this_month_email
     UserMailer.monthly_birthday_and_anniversary_report(self).deliver
+  end
+
+  def send_birthday_and_anniversaries_this_year_email
+    UserMailer.yearly_birthday_and_anniversary_report(self).deliver
   end
   
 end

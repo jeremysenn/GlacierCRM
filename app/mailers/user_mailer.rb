@@ -27,4 +27,16 @@ class UserMailer < ActionMailer::Base
       from:  "jeremy@glacierwealth.com",
     subject: "Monthly Birthday and Anniversary Report"
   end
+
+  def yearly_birthday_and_anniversary_report(user)
+    @user = user
+    @birthday_clients = @user.client_birthdays_this_year
+    @anniversary_clients = @user.client_anniversaries_this_year
+
+#    mail to: user.email,
+    mail to: "senn.jeremy@gmail.com",
+#        cc:  "jeremy@glacierwealth.com",
+      from:  "jeremy@glacierwealth.com",
+    subject: "Yearly Birthday and Anniversary Report"
+  end
 end

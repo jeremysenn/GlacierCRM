@@ -1,4 +1,6 @@
 %tr{:id => "todo_#{@todo.id}"}
-  %td= best_in_place @todo, :completed, type: :checkbox, :collection => ["<i class='icon-check-empty'></i>".html_safe, "<i class='icon-check'></i>".html_safe]
+  %td= best_in_place @todo, :completed, type: :checkbox, :classes => 'strike_if_completed', :collection => ["<i class='icon-check-empty'></i>".html_safe, "<i class='icon-check'></i>".html_safe]
   %td= best_in_place @todo, :title
-  %td= link_to "<i class='icon-remove'></i>".html_safe, todo_path(@todo), :method => :delete, :remote => true, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure you want to completely delete this item?')) }, :class => 'btn btn-mini btn-danger'
+  %td
+    = link_to "<i class='icon-ellipsis-horizontal'></i>".html_safe, "#todo" + @todo.id.to_s, "data-toggle" => "modal", :class => 'btn btn-mini'
+    = link_to "<i class='icon-remove'></i>".html_safe, todo_path(@todo), :method => :delete, :remote => true, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure you want to completely delete this item?')) }, :class => 'btn btn-mini btn-danger'

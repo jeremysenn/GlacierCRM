@@ -1,0 +1,15 @@
+%h4
+  Birthdays This Year
+- unless @birthday_clients.blank?
+  - @birthday_clients.order(:last_name).each do |birthday_client|
+    %p= birthday_client.name + " - " + birthday_client.birthday.change(:year => Date.today.year).strftime("%A %B #{birthday_client.birthday.day.ordinalize}")
+- else
+  Zilch, zip, nada
+
+%h4
+  Anniversaries This Year
+- unless @anniversary_clients.blank?
+  - @anniversary_clients.order(:last_name).each do |anniversary_client|
+    %p= anniversary_client.name + " - " + anniversary_client.anniversary.change(:year => Date.today.year).strftime("%A %B #{anniversary_client.anniversary.day.ordinalize}")
+- else
+  Zilch, zip, nada
