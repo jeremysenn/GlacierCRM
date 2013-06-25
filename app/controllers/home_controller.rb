@@ -3,6 +3,5 @@ class HomeController < ApplicationController
   
   def index
     @clients = current_user.company.contacts.order(:last_name).tagged_with("Client")
-    @todos = current_user.todos
   end
 end

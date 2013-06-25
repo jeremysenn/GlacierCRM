@@ -3,16 +3,19 @@
   %span.icon-bar
   %span.icon-bar
 %a.brand{:href => root_path}
-  = image_tag("moose_logo_small.png")
-  = current_user.company.name if user_signed_in?
+  =# image_tag("moose_logo_small.png")
+  .text-error
+    %i.icon-road
+    = current_user.company.name if user_signed_in?
 .nav-collapse.collapse
   - if user_signed_in?
     %ul.nav
-      %li{:class => params[:controller] == "home" ? "active" : ""}
-        %a{:href => root_path}
-          %strong
-            %i.icon-road
-            Runway
+      - if false
+        %li{:class => params[:controller] == "home" ? "active" : ""}
+          %a{:href => root_path}
+            %strong
+              %i.icon-road
+              Runway
       %li.dropdown{:class => params[:controller] == "contacts" ? "active" : ""}
         %a{:href => '#', :class => 'dropdown-toggle', :data => {:toggle => 'dropdown'}}
           %strong
@@ -72,7 +75,7 @@
     .navbar-form.pull-right
       = form_tag('/searches', :method => "get", :class => "navbar-search form-search") do
         .input-append
-          = text_field_tag :q, nil, :placeholder => "Search", :id => "appendedInputButton", :class => 'span3 search-query'
+          = text_field_tag :q, nil, :placeholder => "Search", :id => "appendedInputButton", :class => 'span2 search-query'
           = button_tag(:type => 'submit', :class => 'btn') do
             %i.icon-search
       %ul.nav.pull-right
@@ -98,7 +101,11 @@
                 %li.divider
               %li= link_to '<i class="icon-question-sign"></i> Help'.html_safe, '#'
               %li= link_to '<i class="icon-off"></i> Log out'.html_safe, destroy_user_session_path, :method=>'delete', :confirm => "Are you sure you want to log out?", :title => "Log out"
-
+        %li.dropdown
+          %a{:href => '#', :id => 'menu_arrow', :class => 'dropdown-toggle', :data => {:toggle => 'dropdown'}}
+            %strong
+              %i.icon-ok-sign
+              %b.caret
   - else
     %ul.nav
       %li= link_to "WHAT IS IT?", '#'

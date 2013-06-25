@@ -43,11 +43,11 @@
     %p
       %strong Business Fax
       = @contact.business_fax
-%p= link_to_function 'More Details <i class="icon-chevron-down"></i>'.html_safe, "$('#client_details').show(); $(this).hide();", :id => 'show_client_details', :class => 'btn btn-small'
+%p= link_to_function 'More Details <i class="icon-chevron-down"></i>'.html_safe, "$('#client_details').show(); $('#show_client_details').hide();", :id => 'show_client_details', :class => 'btn btn-small'
 
 
-#client_details{:style => 'display:none'}
-  %p= link_to_function 'Less Details <i class="icon-chevron-up"></i>'.html_safe, "$('#show_client_details').show(); $(client_details).hide();", :class => 'btn btn-small'
+%div{:id => "client_details", :style => 'display:none'}
+  %p= link_to_function 'Less Details <i class="icon-chevron-up"></i>'.html_safe, "$('#show_client_details').show(); $('#client_details').hide();", :class => 'btn btn-small'
   - unless @contact.birthday.blank?
     %p
       %strong Age
