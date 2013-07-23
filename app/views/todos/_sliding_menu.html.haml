@@ -20,11 +20,21 @@
             %strong= "#{todo.title}"
             %p= todo.created_at.strftime("%-m.%-d.%y")
           .modal-body
-            %p= todo.description
-            %p= todo.completed? ? 'Completed' : 'Not Completed'
+            .row-fluid
+              .span6
+                %strong Description
+                %p= todo.description ||= 'None'
+                %p= todo.completed? ? 'Completed' : 'Not Completed'
+              .span6
+                %strong Mission
+                - unless todo.mission.blank?
+                  %p= link_to todo.mission.title, mission_path(todo.mission)
+                - else
+                  %p= "None"
           .modal-footer
-            = link_to 'Show more', todo_path(todo), :class => 'btn btn-success'
-            = link_to 'Close', '#', :class => 'btn', "data-dismiss" => "modal"
+            = link_to "<i class='icon-edit'></i> Edit".html_safe, edit_todo_path(todo), :class => 'btn btn-primary'
+            = link_to "<i class='icon-align-justify'></i> Show more".html_safe, todo_path(todo), :class => 'btn btn-success'
+            = link_to "<i class='icon-remove'></i> Close".html_safe, '#', :class => 'btn', "data-dismiss" => "modal"
 
 :javascript
   $('#menu_arrow').click(function () {

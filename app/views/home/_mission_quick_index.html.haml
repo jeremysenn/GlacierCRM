@@ -1,0 +1,24 @@
+%div{:style => "height: 300px !important;overflow: scroll;"}
+  %table.table.table-striped.table-hover
+    %tbody
+      - @missions.each do |mission|
+        %tr
+          %td= link_to mission.title + " - " + truncate(mission.description, :length => 25), "#mission" + mission.id.to_s, "data-toggle" => "modal", :type => "button"
+        %div{:id => "mission" + mission.id.to_s, :class => "modal", :style => "display:none;"}
+          .modal-header
+            = link_to "×", '#', :class => "close", "data-dismiss" => "modal"
+            %strong= "#{mission.title}"
+          .modal-body
+            .span6
+              %strong Description
+              %p= mission.description
+            .span6
+              %strong Todos
+              - unless mission.todos.blank?
+                - mission.todos.each do |todo|
+                  %p= link_to todo.title, todo_path(todo)
+              - else
+                None
+          .modal-footer
+            = link_to 'Show more', mission_path(mission), :class => 'btn btn-success'
+            = link_to 'Close', '#', :class => 'btn', "data-dismiss" => "modal"

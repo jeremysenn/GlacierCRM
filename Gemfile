@@ -8,6 +8,10 @@ group :assets do
   gem 'twitter-bootstrap-rails'
 end
 
+gem 'nested_form' #Nested forms for uploading multiple files at a time.
+gem 'carrierwave'
+gem 'omniauth-google-oauth2' #For authenticating the user and getting the auth token of user's account
+gem 'google-api-client' #For creating the events or getting the user's calendar data
 gem 'mysql2'#, '< 0.3'
 gem 'acts-as-taggable-on' #Tags
 gem 'birthday' # Show years/age from dob, anniversaries, etc.

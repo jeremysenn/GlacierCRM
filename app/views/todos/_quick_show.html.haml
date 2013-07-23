@@ -4,3 +4,14 @@
   %td
     = link_to "<i class='icon-ellipsis-horizontal'></i>".html_safe, "#todo" + @todo.id.to_s, "data-toggle" => "modal", :class => 'btn btn-mini'
     = link_to "<i class='icon-remove'></i>".html_safe, todo_path(@todo), :method => :delete, :remote => true, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure you want to completely delete this item?')) }, :class => 'btn btn-mini btn-danger'
+%div{:id => "todo" + @todo.id.to_s, :class => "modal", :style => "display:block;"}
+  .modal-header
+    = link_to "×", '#', :class => "close", "data-dismiss" => "modal"
+    %strong= "#{@todo.title}"
+    %p= @todo.created_at.strftime("%-m.%-d.%y")
+  .modal-body
+    %p= @todo.description
+    %p= @todo.completed? ? 'Completed' : 'Not Completed'
+  .modal-footer
+    = link_to 'Show more', todo_path(@todo), :class => 'btn btn-success'
+    = link_to 'Close', '#', :class => 'btn', "data-dismiss" => "modal"

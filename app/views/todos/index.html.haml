@@ -9,7 +9,7 @@
       %th= model_class.human_attribute_name(:description)
       %th= model_class.human_attribute_name(:completed)
       %th= model_class.human_attribute_name(:user_id)
-      %th= model_class.human_attribute_name(:project_id)
+      %th= model_class.human_attribute_name(:mission_id)
       %th= model_class.human_attribute_name(:created_at)
       %th=t '.actions', :default => t("helpers.actions")
   %tbody
@@ -19,8 +19,8 @@
         %td= todo.title
         %td= todo.description
         %td= todo.completed
-        %td= todo.user_id
-        %td= todo.project_id
+        %td= todo.user.name
+        %td= todo.mission ? todo.mission.title : 'None'
         %td=l todo.created_at
         %td
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_todo_path(todo), :class => 'btn btn-mini'

@@ -1,0 +1,54 @@
+- model_class = Mission
+.page-header
+  %h1
+    %i.icon-plane
+    =t '.title', :default => model_class.model_name.human
+
+%p
+  %strong= model_class.human_attribute_name(:title) + ':'
+  %br
+  = @mission.title
+%p
+  %strong= model_class.human_attribute_name(:description) + ':'
+  %br
+  = @mission.description
+%p
+  %strong= model_class.human_attribute_name(:contact_id) + ':'
+  %br
+  = @mission.contact ? @mission.contact.name : 'None'
+%p
+  %strong= model_class.human_attribute_name(:user_id) + ':'
+  %br
+  = @mission.user.name
+%p
+  %strong= model_class.human_attribute_name(:completed) + ':'
+  %br
+  = @mission.completed? ? 'Yes' : 'No'
+%p
+  %strong= model_class.human_attribute_name(:date) + ':'
+  %br
+  = @mission.date.strftime("%-m.%-d.%Y")
+%p
+  %strong= model_class.human_attribute_name(:priority) + ':'
+  %br
+  = @mission.priority
+%p
+  %strong= "Todos:"
+  - unless @mission.todos.blank?
+    - @mission.todos.each do |todo|
+      %p= link_to todo.title, todo_path(todo)
+  - else
+    None
+%p
+  %strong= "Tasks:"
+%p
+  %strong= "Appointments:"
+%p
+  %strong= "Documents:"
+  - @mission.documents.each do |document|
+    %p= link_to document.title, document_path(document)
+
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")), missions_path, :class => 'btn'
+  = link_to t('.edit', :default => t("helpers.links.edit")), edit_mission_path(@mission), :class => 'btn'
+  = link_to t('.destroy', :default => t("helpers.links.destroy")), mission_path(@mission), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

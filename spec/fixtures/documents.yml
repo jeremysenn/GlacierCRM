@@ -1,0 +1,9 @@
+one:
+  title: MyString
+  document: MyString
+  documentable: 1
+
+two:
+  title: MyString
+  document: MyString
+  documentable: 1

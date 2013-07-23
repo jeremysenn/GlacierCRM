@@ -13,13 +13,12 @@
 %p
   %strong= model_class.human_attribute_name(:completed) + ':'
   %br
-  = @todo.completed
+  = @todo.completed? ? 'Yes' : 'No'
 
-- unless @todo.project_id.blank?
-  %p
-    %strong= model_class.human_attribute_name(:project_id) + ':'
-    %br
-    = @todo.project_id
+%p
+  %strong= model_class.human_attribute_name(:mission_id) + ':'
+  %br
+  = @todo.mission.blank? ? @todo.mission.title : 'None'
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), todos_path, :class => 'btn'

@@ -2,50 +2,18 @@
   %h3
     %i.icon-road
     = "Runway"
+  = link_to "Sign in with Google", "/auth/google_oauth2"
 .row-fluid
   .span2
     %h4 
       %i.icon-user
       Clients
-    %div{:style => "height: 300px !important;overflow: scroll;"}
-      %table.table.table-striped.table-hover
-        %tbody
-          - @clients.each do |client|
-            %tr
-              %td= link_to client.name, "#client" + client.id.to_s, "data-toggle" => "modal", :type => "button"
-            %div{:id => "client" + client.id.to_s, :class => "modal", :style => "display:none;"}
-              .modal-header
-                = link_to "×", '#', :class => "close", "data-dismiss" => "modal"
-                %strong= "#{client.name}"
-                %p= "Age #{client.birthday_age}"
-              .modal-body
-                .span6
-                  - unless client.mobile_phone.blank?
-                    %p
-                      %strong Mobile
-                      = client.mobile_phone
-                  - unless client.home_phone.blank?
-                    %p
-                      %strong Home
-                      = client.home_phone
-                  - unless client.business_phone.blank?
-                    %p
-                      %strong Business
-                      = client.business_phone
-                  %p
-                    %strong Years as Client
-                    = client.years_as_client
-                .span6
-                  - unless client.pretty_home_address.nil?
-                    %strong Home Address
-                    %p= client.pretty_home_address
-              .modal-footer
-                = link_to 'Show more', contact_path(client), :class => 'btn btn-success'
-                = link_to 'Close', '#', :class => 'btn', "data-dismiss" => "modal"
+    = render :partial => 'client_quick_index'
   .span3
     %h4 
-      %i.icon-star
-      Projects
+      %i.icon-plane
+      Missions
+    = render :partial => 'mission_quick_index'
   .span3
     %h4
       %i.icon-tasks

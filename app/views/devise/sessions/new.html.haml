@@ -1,4 +1,6 @@
 .row-fluid
+  =# link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2)
+  = link_to "Sign in with Google", "/auth/google_oauth2"
   .jumbotron
     .pagination-centered
       = image_tag("moose_logo_medium.png")

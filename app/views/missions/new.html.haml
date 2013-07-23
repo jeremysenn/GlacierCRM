@@ -1,0 +1,6 @@
+- model_class = Mission
+.page-header
+  %h1
+    %i.icon-plane
+    =t '.title', :default => t('helpers.titles.new', :model => model_class.model_name.human, :default => "New #{model_class.model_name.human}")
+= render :partial => "form"

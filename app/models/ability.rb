@@ -27,6 +27,13 @@ class Ability
       end
       can :create, Todo
 
+      # Missions
+      ############
+      can :manage, Mission do |m|
+        m.user.id == user.id
+      end
+      can :create, Mission
+
       # Company
       ############
       can :manage, Company do |c|

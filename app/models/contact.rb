@@ -12,9 +12,10 @@ class Contact < ActiveRecord::Base
   acts_as_birthday :birthday
   acts_as_birthday :anniversary
   belongs_to :user
+  has_many :missions
 
-  validates :first_name, :presence => true
-  validates :last_name, :presence => true
+  #validates :first_name, :presence => true
+  #validates :last_name, :presence => true
 
   ### SUNSPOT SOLR SEARCHING ###
   searchable do
@@ -64,16 +65,16 @@ class Contact < ActiveRecord::Base
   ### Import CSV File ###
   def self.import(file)
     ### Use this loop instead if not updating records ###
-#    CSV.foreach(file.path, headers: true) do |row|
-#      Contact.create! row.to_hash
-#    end
+    CSV.foreach(file.path, headers: true) do |row|
+      Contact.create! row.to_hash
+    end
 
     ### Use this if updating existing records ###
-    CSV.foreach(file.path, headers: true) do |row|
-      contact = find_by_id(row["id"]) || new
-      contact.attributes = row.to_hash.slice(*accessible_attributes)
-      contact.save!
-    end
+#    CSV.foreach(file.path, headers: true) do |row|
+#      contact = find_by_id(row["id"]) || new
+#      contact.attributes = row.to_hash.slice(*accessible_attributes)
+#      contact.save!
+#    end
   end
 
   ### Export to CSV File ###
