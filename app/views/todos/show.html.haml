@@ -18,7 +18,7 @@
 %p
   %strong= model_class.human_attribute_name(:mission_id) + ':'
   %br
-  = @todo.mission.blank? ? @todo.mission.title : 'None'
+  = @todo.mission ? @todo.mission.title : 'None'
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), todos_path, :class => 'btn'
