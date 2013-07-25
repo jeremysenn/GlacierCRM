@@ -3,7 +3,11 @@ class MissionsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @missions = Mission.all
+    if current_user.has_role? :superuser
+      @missions = Mission.all
+    else
+      @missions = current_user.missions
+    end
   end
 
   def show

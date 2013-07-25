@@ -41,6 +41,11 @@
     None
 %p
   %strong= "Tasks:"
+  - unless @mission.tasks.blank?
+    - @mission.tasks.each do |task|
+      %p= link_to task.title, task_path(task)
+  - else
+    None
 %p
   %strong= "Appointments:"
 %p

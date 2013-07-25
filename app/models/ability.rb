@@ -27,6 +27,13 @@ class Ability
       end
       can :create, Todo
 
+      # Tasks
+      ############
+      can :manage, Task do |t|
+        t.user.id == user.id
+      end
+      can :create, Task
+
       # Missions
       ############
       can :manage, Mission do |m|

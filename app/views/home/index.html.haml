@@ -13,11 +13,14 @@
     %h4 
       %i.icon-plane
       Missions
+      = link_to "<i class='icon-plus'></i>".html_safe, new_mission_path, :class => 'btn btn-mini btn-success pull-right'
     = render :partial => 'mission_quick_index'
   .span3
     %h4
       %i.icon-tasks
       Tasks
+      = link_to "<i class='icon-plus'></i>".html_safe, new_task_path, :class => 'btn btn-mini btn-success pull-right'
+    = render :partial => 'task_quick_index'
   .span4
     %h4 
       %i.icon-calendar

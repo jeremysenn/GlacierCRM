@@ -9,16 +9,23 @@
             = link_to "×", '#', :class => "close", "data-dismiss" => "modal"
             %strong= "#{mission.title}"
           .modal-body
-            .span6
+            .span4
               %strong Description
               %p= mission.description
-            .span6
+            .span4
               %strong Todos
               - unless mission.todos.blank?
                 - mission.todos.each do |todo|
                   %p= link_to todo.title, todo_path(todo)
               - else
-                None
+                %p None
+            .span4
+              %strong Tasks
+              - unless mission.tasks.blank?
+                - mission.tasks.each do |task|
+                  %p= link_to task.title, task_path(task)
+              - else
+                %p None
           .modal-footer
             = link_to 'Show more', mission_path(mission), :class => 'btn btn-success'
             = link_to 'Close', '#', :class => 'btn', "data-dismiss" => "modal"

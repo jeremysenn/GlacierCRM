@@ -4,7 +4,11 @@ class TodosController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @todos = Todo.all
+    if current_user.has_role? :superuser
+      @todos = Todo.all
+    else
+      @todos = current_user.todos
+    end
   end
 
   def show

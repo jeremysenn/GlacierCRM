@@ -1,5 +1,7 @@
 GlacierCRM::Application.routes.draw do
   
+  resources :tasks
+
   resources :documents
 
   #Route to catch the response when Google sends us a callback (same one from RailsCasts episode)

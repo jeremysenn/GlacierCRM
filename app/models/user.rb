@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :contacts
   has_many :todos
   has_many :missions
+  has_many :tasks
 
   def clients
     contacts.tagged_with("Client")
