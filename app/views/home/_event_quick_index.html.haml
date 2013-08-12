@@ -1,0 +1,16 @@
+%div{:style => "height: 300px !important;overflow: scroll;"}
+  %table.table.table-striped.table-hover
+    %tbody
+      - @events.each do |event|
+        %tr
+          %td= link_to event.title + " - " + truncate(event.description, :length => 25), "#event" + event.id.to_s, "data-toggle" => "modal", :type => "button"
+        %div{:id => "event" + event.id.to_s, :class => "modal", :style => "display:none;"}
+          .modal-header
+            = link_to "×", '#', :class => "close", "data-dismiss" => "modal"
+            %strong= "#{event.title}"
+          .modal-body
+            %strong Description
+            %p= event.description
+          .modal-footer
+            = link_to 'Show more', event_path(event), :class => 'btn btn-success'
+            = link_to 'Close', '#', :class => 'btn', "data-dismiss" => "modal"

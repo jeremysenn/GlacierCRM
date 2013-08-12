@@ -4,7 +4,7 @@
     = "Runway"
   =# link_to "Sign in with Google", "/auth/google_oauth2"
 .row-fluid
-  .span2
+  .span3
     %h4 
       %i.icon-user
       Clients
@@ -21,12 +21,12 @@
       Tasks
       = link_to "<i class='icon-plus'></i>".html_safe, new_task_path, :class => 'btn btn-mini btn-success pull-right'
     = render :partial => 'task_quick_index'
-  .span4
+  .span3
     %h4 
       %i.icon-calendar
       Events
-  
-  
+      = link_to "<i class='icon-plus'></i>".html_safe, new_event_path, :class => 'btn btn-mini btn-success pull-right'
+    = render :partial => 'event_quick_index'
     - if false
       .span3
         %h4

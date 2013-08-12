@@ -3,9 +3,19 @@
   .control-group
     = f.label :starts_at, :class => 'control-label'
     .controls
-      = f.text_field :starts_at, :id => "datepicker", :value => Date.today, :class => 'input-small', :default => Date.today
-  = f.input :starts_at
-  = f.input :ends_at
+      %div{:id => "datepicker_start", :class => "input-append date"}
+        = f.text_field :starts_at, "data-format" => "yyyy-MM-dd hh:mm", :value => Time.now, :class => 'input-small', :default => Time.now
+        %span{:class => "add-on"}
+          %i.icon-calendar
+  .control-group
+    = f.label :ends_at, :class => 'control-label'
+    .controls
+      %div{:id => "datepicker_end", :class => "input-append date"}
+        = f.text_field :ends_at, "data-format" => "yyyy-MM-dd hh:mm", :value => Time.now, :class => 'input-small', :default => Time.now
+        %span{:class => "add-on"}
+          %i.icon-calendar
+  =# f.input :starts_at
+  =# f.input :ends_at
   = f.input :where, :input_html => {:class => "span4"}
   = f.input :description, :input_html => {:class => "span4", :rows => 4}
   = f.hidden_field :user_id, :value => current_user.id
@@ -26,4 +36,6 @@
 
 %script
   //$('#datepicker').datepicker({format: 'yyyy-mm-dd'});
-  $('#datepicker').timepicker();
+  //$('#datepicker').timepicker();
+  $('#datepicker_start').datetimepicker({language: 'en', pick12HourFormat: true, pickSeconds: false});
+  $('#datepicker_end').datetimepicker({language: 'en', pick12HourFormat: true, pickSeconds: false});

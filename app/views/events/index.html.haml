@@ -1,6 +1,8 @@
 - model_class = Event
 .page-header
-  %h1=t '.title', :default => model_class.model_name.human.pluralize
+  %h1
+    %i.icon-calendar
+    =t '.title', :default => model_class.model_name.human.pluralize
 %table.table.table-striped
   %thead
     %tr

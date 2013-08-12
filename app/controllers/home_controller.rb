@@ -5,5 +5,6 @@ class HomeController < ApplicationController
     @clients = current_user.company.contacts.order(:last_name).tagged_with("Client")
     @missions = current_user.missions
     @tasks = current_user.tasks
+    @events = current_user.events
   end
 end
