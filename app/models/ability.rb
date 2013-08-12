@@ -46,6 +46,13 @@ class Ability
       can :manage, Company do |c|
         c.id == user.company.id
       end
+
+      # Events
+      ############
+      can :manage, Event do |e|
+        e.user.id == user.id
+      end
+      can :create, Event
     end
     # Define abilities for the passed in user here. For example:
     #
