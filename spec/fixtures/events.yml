@@ -1,0 +1,19 @@
+one:
+  title: MyString
+  description: MyText
+  user_id: 1
+  contact_id: 1
+  mission_id: 1
+  starts_at: 2013-07-27 08:57:55
+  ends_at: 2013-07-27 08:57:55
+  where: MyString
+
+two:
+  title: MyString
+  description: MyText
+  user_id: 1
+  contact_id: 1
+  mission_id: 1
+  starts_at: 2013-07-27 08:57:55
+  ends_at: 2013-07-27 08:57:55
+  where: MyString

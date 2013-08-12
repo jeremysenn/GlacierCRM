@@ -13,6 +13,8 @@ class Contact < ActiveRecord::Base
   acts_as_birthday :anniversary
   belongs_to :user
   has_many :missions
+  has_many :tasks
+  has_many :events
 
   #validates :first_name, :presence => true
   #validates :last_name, :presence => true

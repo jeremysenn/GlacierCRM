@@ -1,5 +1,7 @@
 GlacierCRM::Application.routes.draw do
   
+  resources :events
+
   resources :tasks
 
   resources :documents

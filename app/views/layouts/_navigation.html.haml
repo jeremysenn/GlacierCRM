@@ -20,7 +20,7 @@
         %a{:href => '#', :class => 'dropdown-toggle', :data => {:toggle => 'dropdown'}}
           %strong
             %i.icon-user
-            Contacts
+            
             %b.caret
         %ul.dropdown-menu
           %li
@@ -33,7 +33,7 @@
         %a{:href => '#', :class => 'dropdown-toggle', :data => {:toggle => 'dropdown'}}
           %strong
             %i.icon-plane
-            Missions
+            
             %b.caret
         %ul.dropdown-menu
           %li
@@ -46,7 +46,7 @@
           %li
             %a{:href => nil}
               %i.icon-calendar
-              Calendar
+              
           %li.divider
           %li
             %a{:href => nil}
@@ -56,7 +56,7 @@
         %a{:href => '#', :class => 'dropdown-toggle', :data => {:toggle => 'dropdown'}}
           %strong
             %i.icon-tasks
-            Tasks
+            
             %b.caret
         %ul.dropdown-menu
           %li
@@ -65,11 +65,37 @@
           %li
             %a{:href => new_task_path}
               New Task
+      %li.dropdown{:class => params[:controller] == "events" ? "active" : ""}
+        %a{:href => '#', :class => 'dropdown-toggle', :data => {:toggle => 'dropdown'}}
+          %strong
+            %i.icon-calendar
+            
+            %b.caret
+        %ul.dropdown-menu
+          %li
+            %a{:href => events_path}
+              All Events
+          %li
+            %a{:href => new_event_path}
+              New Event
+      %li.dropdown{:class => params[:controller] == "emails" ? "active" : ""}
+        %a{:href => '#', :class => 'dropdown-toggle', :data => {:toggle => 'dropdown'}}
+          %strong
+            %i.icon-pencil
+
+            %b.caret
+        %ul.dropdown-menu
+          %li
+            %a{:href => nil}
+              All Emails
+          %li
+            %a{:href => nil}
+              New Email
       %li.dropdown{:class => params[:controller] == "companies" ? "active" : ""}
         %a{:href => '#', :class => 'dropdown-toggle', :data => {:toggle => 'dropdown'}}
           %strong
             %i.icon-briefcase
-            Company
+            
             %b.caret
         %ul.dropdown-menu
           %li

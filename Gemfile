@@ -8,6 +8,7 @@ group :assets do
   gem 'twitter-bootstrap-rails'
 end
 
+gem 'jquery-timepicker-rails' # jquery-timepicker packaged for the Rails 3.1+ asset pipeline.
 gem 'nested_form' #Nested forms for uploading multiple files at a time.
 gem 'carrierwave'
 gem 'omniauth-google-oauth2' #For authenticating the user and getting the auth token of user's account

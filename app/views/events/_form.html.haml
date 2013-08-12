@@ -1,0 +1,29 @@
+= simple_nested_form_for @event, :html => { :multipart => true, :class => 'form-horizontal' } do |f|
+  = f.input :title, :input_html => {:class => "span4"}
+  .control-group
+    = f.label :starts_at, :class => 'control-label'
+    .controls
+      = f.text_field :starts_at, :id => "datepicker", :value => Date.today, :class => 'input-small', :default => Date.today
+  = f.input :starts_at
+  = f.input :ends_at
+  = f.input :where, :input_html => {:class => "span4"}
+  = f.input :description, :input_html => {:class => "span4", :rows => 4}
+  = f.hidden_field :user_id, :value => current_user.id
+  = f.association :contact, collection: current_user.company.contacts.order(:last_name).tagged_with("Client"), prompt: "Assign to a Client"
+  = f.association :mission, collection: current_user.missions.find_all_by_completed(:false), prompt: "Assign to a Mission"
+  = f.simple_fields_for :documents do |document_form|
+    .well.well-large
+      = document_form.input :title
+      - unless document_form.object.new_record?
+        = document_form.object.document_url
+      = document_form.file_field :document if document_form.object.new_record?
+      = document_form.link_to_remove "Remove this document", :class => 'btn btn-mini btn-danger'
+
+  %p= f.link_to_add "Add a document", :documents, :class =>  "btn btn-mini btn-warning"
+  .form-actions
+    = f.button :submit, :class => 'btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), events_path, :class => 'btn'
+
+%script
+  //$('#datepicker').datepicker({format: 'yyyy-mm-dd'});
+  $('#datepicker').timepicker();
